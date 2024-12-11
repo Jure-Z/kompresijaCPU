@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\faks\diplomska\kompresijaCPU\build\CMakeFiles\1d5ce8d56097a17fb764dc58f790bafa\doc-eigen-prerequisites.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\faks\diplomska\kompresijaCPU\eigen\doc\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\faks\diplomska\kompresijaCPU\build\eigen\doc\CMakeFiles\doc-eigen-prerequisites" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{2345B4A1-702E-3E0D-8889-BB215ED49DFE}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

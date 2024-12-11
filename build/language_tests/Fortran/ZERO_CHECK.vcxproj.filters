@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\faks\diplomska\kompresijaCPU\build\language_tests\Fortran\CMakeFiles\49497d8ce57f9e0e352085936a338170\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{08FAE9E0-70F9-3916-B0EC-59848E8E0966}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

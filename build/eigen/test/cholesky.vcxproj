@@ -1,0 +1,213 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{F661AAAF-FC03-354B-AA09-41305698A7A5}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.26100.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>cholesky</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>C:\faks\diplomska\kompresijaCPU\build\eigen\test;C:\faks\diplomska\kompresijaCPU\eigen\test;C:\faks\diplomska\kompresijaCPU\eigen;C:\faks\diplomska\kompresijaCPU\build\eigen;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>C:\faks\diplomska\kompresijaCPU\build\eigen\test;C:\faks\diplomska\kompresijaCPU\eigen\test;C:\faks\diplomska\kompresijaCPU\eigen;C:\faks\diplomska\kompresijaCPU\build\eigen;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>C:\faks\diplomska\kompresijaCPU\build\eigen\test;C:\faks\diplomska\kompresijaCPU\eigen\test;C:\faks\diplomska\kompresijaCPU\eigen;C:\faks\diplomska\kompresijaCPU\build\eigen;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>C:\faks\diplomska\kompresijaCPU\build\eigen\test;C:\faks\diplomska\kompresijaCPU\eigen\test;C:\faks\diplomska\kompresijaCPU\eigen;C:\faks\diplomska\kompresijaCPU\build\eigen;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\faks\diplomska\kompresijaCPU\eigen\test\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/faks/diplomska/kompresijaCPU/eigen/test/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/faks/diplomska/kompresijaCPU -BC:/faks/diplomska/kompresijaCPU/build --check-stamp-file C:/faks/diplomska/kompresijaCPU/build/eigen/test/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Program Files\CMake\share\cmake-3.30\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CMakeCompilerIdDetection.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CMakeDetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CMakeDetermineCompilerId.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CMakeDetermineFortranCompiler.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CMakeFindBinUtils.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CMakeFortranCompiler.cmake.in;C:\Program Files\CMake\share\cmake-3.30\Modules\CMakeFortranInformation.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CMakePushCheckState.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CheckCSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CheckCSourceRuns.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CheckCXXSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CheckCXXSymbolExists.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CheckFortranFunctionExists.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CheckFunctionExists.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CheckSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CheckStructHasMember.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CompilerId\VS-Intel.vfproj.in;C:\Program Files\CMake\share\cmake-3.30\Modules\FindBoost.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\FindMPI.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\FindPkgConfig.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\FindQt4.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\FindThreads.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\Internal\CheckSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\Internal\CheckSourceRuns.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\MacroAddFileDependencies.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\Platform\WindowsPaths.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\FindBLAS.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\FindBLASEXT.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\FindCholmod.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\FindHWLOC.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\FindKLU.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\FindLAPACK.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\FindMetis.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\FindPTSCOTCH.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\FindPastix.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\FindSPQR.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\FindScotch.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\FindSuperLU.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\FindUmfpack.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\language_support.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\faks\diplomska\kompresijaCPU\build\eigen\test\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/faks/diplomska/kompresijaCPU/eigen/test/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/faks/diplomska/kompresijaCPU -BC:/faks/diplomska/kompresijaCPU/build --check-stamp-file C:/faks/diplomska/kompresijaCPU/build/eigen/test/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Program Files\CMake\share\cmake-3.30\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CMakeCompilerIdDetection.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CMakeDetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CMakeDetermineCompilerId.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CMakeDetermineFortranCompiler.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CMakeFindBinUtils.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CMakeFortranCompiler.cmake.in;C:\Program Files\CMake\share\cmake-3.30\Modules\CMakeFortranInformation.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CMakePushCheckState.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CheckCSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CheckCSourceRuns.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CheckCXXSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CheckCXXSymbolExists.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CheckFortranFunctionExists.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CheckFunctionExists.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CheckSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CheckStructHasMember.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CompilerId\VS-Intel.vfproj.in;C:\Program Files\CMake\share\cmake-3.30\Modules\FindBoost.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\FindMPI.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\FindPkgConfig.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\FindQt4.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\FindThreads.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\Internal\CheckSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\Internal\CheckSourceRuns.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\MacroAddFileDependencies.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\Platform\WindowsPaths.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\FindBLAS.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\FindBLASEXT.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\FindCholmod.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\FindHWLOC.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\FindKLU.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\FindLAPACK.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\FindMetis.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\FindPTSCOTCH.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\FindPastix.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\FindSPQR.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\FindScotch.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\FindSuperLU.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\FindUmfpack.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\language_support.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\faks\diplomska\kompresijaCPU\build\eigen\test\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/faks/diplomska/kompresijaCPU/eigen/test/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/faks/diplomska/kompresijaCPU -BC:/faks/diplomska/kompresijaCPU/build --check-stamp-file C:/faks/diplomska/kompresijaCPU/build/eigen/test/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Program Files\CMake\share\cmake-3.30\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CMakeCompilerIdDetection.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CMakeDetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CMakeDetermineCompilerId.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CMakeDetermineFortranCompiler.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CMakeFindBinUtils.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CMakeFortranCompiler.cmake.in;C:\Program Files\CMake\share\cmake-3.30\Modules\CMakeFortranInformation.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CMakePushCheckState.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CheckCSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CheckCSourceRuns.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CheckCXXSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CheckCXXSymbolExists.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CheckFortranFunctionExists.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CheckFunctionExists.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CheckSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CheckStructHasMember.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CompilerId\VS-Intel.vfproj.in;C:\Program Files\CMake\share\cmake-3.30\Modules\FindBoost.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\FindMPI.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\FindPkgConfig.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\FindQt4.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\FindThreads.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\Internal\CheckSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\Internal\CheckSourceRuns.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\MacroAddFileDependencies.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\Platform\WindowsPaths.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\FindBLAS.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\FindBLASEXT.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\FindCholmod.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\FindHWLOC.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\FindKLU.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\FindLAPACK.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\FindMetis.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\FindPTSCOTCH.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\FindPastix.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\FindSPQR.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\FindScotch.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\FindSuperLU.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\FindUmfpack.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\language_support.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\faks\diplomska\kompresijaCPU\build\eigen\test\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/faks/diplomska/kompresijaCPU/eigen/test/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/faks/diplomska/kompresijaCPU -BC:/faks/diplomska/kompresijaCPU/build --check-stamp-file C:/faks/diplomska/kompresijaCPU/build/eigen/test/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Program Files\CMake\share\cmake-3.30\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CMakeCompilerIdDetection.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CMakeDetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CMakeDetermineCompilerId.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CMakeDetermineFortranCompiler.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CMakeFindBinUtils.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CMakeFortranCompiler.cmake.in;C:\Program Files\CMake\share\cmake-3.30\Modules\CMakeFortranInformation.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CMakePushCheckState.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CheckCSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CheckCSourceRuns.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CheckCXXSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CheckCXXSymbolExists.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CheckFortranFunctionExists.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CheckFunctionExists.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CheckSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CheckStructHasMember.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CompilerId\VS-Intel.vfproj.in;C:\Program Files\CMake\share\cmake-3.30\Modules\FindBoost.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\FindMPI.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\FindPkgConfig.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\FindQt4.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\FindThreads.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\Internal\CheckSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\Internal\CheckSourceRuns.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\MacroAddFileDependencies.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\Platform\WindowsPaths.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\FindBLAS.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\FindBLASEXT.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\FindCholmod.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\FindHWLOC.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\FindKLU.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\FindLAPACK.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\FindMetis.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\FindPTSCOTCH.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\FindPastix.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\FindSPQR.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\FindScotch.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\FindSuperLU.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\FindUmfpack.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\language_support.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\faks\diplomska\kompresijaCPU\build\eigen\test\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\ZERO_CHECK.vcxproj">
+      <Project>{4D349682-992D-33B8-ACF3-583CAB8D272F}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\test\cholesky_1.vcxproj">
+      <Project>{1ADC17EF-B671-36B7-BC76-D0610D984AEB}</Project>
+      <Name>cholesky_1</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\test\cholesky_2.vcxproj">
+      <Project>{16567FB7-AE45-351B-A8F4-378EAD9914F1}</Project>
+      <Name>cholesky_2</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\test\cholesky_3.vcxproj">
+      <Project>{66DEBB98-AAD3-3AAF-A62E-87F0E351D696}</Project>
+      <Name>cholesky_3</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\test\cholesky_4.vcxproj">
+      <Project>{3D6A875C-1870-3574-91A2-362AE817B186}</Project>
+      <Name>cholesky_4</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\test\cholesky_5.vcxproj">
+      <Project>{F7FF00CF-CE62-386A-A9D2-807A4F794F70}</Project>
+      <Name>cholesky_5</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\test\cholesky_6.vcxproj">
+      <Project>{710D86B5-70B4-306D-BB6E-1474534D7FC2}</Project>
+      <Name>cholesky_6</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\test\cholesky_7.vcxproj">
+      <Project>{D3990C24-EF9A-3FAA-A010-271C8BF29D1E}</Project>
+      <Name>cholesky_7</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\test\cholesky_8.vcxproj">
+      <Project>{63D86B33-7970-3C2B-A750-5A19A8259E34}</Project>
+      <Name>cholesky_8</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\test\cholesky_9.vcxproj">
+      <Project>{1DCD4BF3-2261-3582-B889-A81B26D8D593}</Project>
+      <Name>cholesky_9</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

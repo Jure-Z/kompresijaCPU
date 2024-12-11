@@ -1,0 +1,4 @@
+# Target labels
+ BuildOfficial
+# Source files and their labels
+C:/faks/diplomska/kompresijaCPU/eigen/test/vectorization_logic.cpp

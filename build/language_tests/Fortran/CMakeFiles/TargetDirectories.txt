@@ -1,0 +1,2 @@
+C:/faks/diplomska/kompresijaCPU/build/language_tests/Fortran/CMakeFiles/ALL_BUILD.dir
+C:/faks/diplomska/kompresijaCPU/build/language_tests/Fortran/CMakeFiles/ZERO_CHECK.dir

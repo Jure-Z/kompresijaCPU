@@ -1,0 +1,629 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{5CD739DC-DFF3-3D69-99F8-C66025E23DE6}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.26100.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>BuildUnsupported</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test;C:\faks\diplomska\kompresijaCPU\eigen\unsupported\test;C:\faks\diplomska\kompresijaCPU\eigen;C:\faks\diplomska\kompresijaCPU\build\eigen;C:\faks\diplomska\kompresijaCPU\eigen\unsupported\test\..\..\test;C:\faks\diplomska\kompresijaCPU\eigen\unsupported\test\..\..\unsupported;C:\faks\diplomska\kompresijaCPU\eigen\unsupported\test\..\..\Eigen;C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\..\..\test;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test;C:\faks\diplomska\kompresijaCPU\eigen\unsupported\test;C:\faks\diplomska\kompresijaCPU\eigen;C:\faks\diplomska\kompresijaCPU\build\eigen;C:\faks\diplomska\kompresijaCPU\eigen\unsupported\test\..\..\test;C:\faks\diplomska\kompresijaCPU\eigen\unsupported\test\..\..\unsupported;C:\faks\diplomska\kompresijaCPU\eigen\unsupported\test\..\..\Eigen;C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\..\..\test;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test;C:\faks\diplomska\kompresijaCPU\eigen\unsupported\test;C:\faks\diplomska\kompresijaCPU\eigen;C:\faks\diplomska\kompresijaCPU\build\eigen;C:\faks\diplomska\kompresijaCPU\eigen\unsupported\test\..\..\test;C:\faks\diplomska\kompresijaCPU\eigen\unsupported\test\..\..\unsupported;C:\faks\diplomska\kompresijaCPU\eigen\unsupported\test\..\..\Eigen;C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\..\..\test;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test;C:\faks\diplomska\kompresijaCPU\eigen\unsupported\test;C:\faks\diplomska\kompresijaCPU\eigen;C:\faks\diplomska\kompresijaCPU\build\eigen;C:\faks\diplomska\kompresijaCPU\eigen\unsupported\test\..\..\test;C:\faks\diplomska\kompresijaCPU\eigen\unsupported\test\..\..\unsupported;C:\faks\diplomska\kompresijaCPU\eigen\unsupported\test\..\..\Eigen;C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\..\..\test;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\faks\diplomska\kompresijaCPU\eigen\unsupported\test\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/faks/diplomska/kompresijaCPU/eigen/unsupported/test/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/faks/diplomska/kompresijaCPU -BC:/faks/diplomska/kompresijaCPU/build --check-stamp-file C:/faks/diplomska/kompresijaCPU/build/eigen/unsupported/test/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Program Files\CMake\share\cmake-3.30\Modules\CheckCSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\FindCUDA.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\FindCUDA\select_compute_arch.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\FindGLUT.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\FindOpenGL.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\FindPkgConfig.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\FindThreads.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\SelectLibraryConfigurations.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\FindAdolc.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\FindFFTW.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\FindGLEW.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\FindGMP.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\FindGoogleHash.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\FindMPFR.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\FindXsmm.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/faks/diplomska/kompresijaCPU/eigen/unsupported/test/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/faks/diplomska/kompresijaCPU -BC:/faks/diplomska/kompresijaCPU/build --check-stamp-file C:/faks/diplomska/kompresijaCPU/build/eigen/unsupported/test/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Program Files\CMake\share\cmake-3.30\Modules\CheckCSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\FindCUDA.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\FindCUDA\select_compute_arch.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\FindGLUT.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\FindOpenGL.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\FindPkgConfig.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\FindThreads.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\SelectLibraryConfigurations.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\FindAdolc.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\FindFFTW.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\FindGLEW.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\FindGMP.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\FindGoogleHash.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\FindMPFR.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\FindXsmm.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/faks/diplomska/kompresijaCPU/eigen/unsupported/test/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/faks/diplomska/kompresijaCPU -BC:/faks/diplomska/kompresijaCPU/build --check-stamp-file C:/faks/diplomska/kompresijaCPU/build/eigen/unsupported/test/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Program Files\CMake\share\cmake-3.30\Modules\CheckCSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\FindCUDA.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\FindCUDA\select_compute_arch.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\FindGLUT.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\FindOpenGL.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\FindPkgConfig.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\FindThreads.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\SelectLibraryConfigurations.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\FindAdolc.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\FindFFTW.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\FindGLEW.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\FindGMP.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\FindGoogleHash.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\FindMPFR.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\FindXsmm.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/faks/diplomska/kompresijaCPU/eigen/unsupported/test/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/faks/diplomska/kompresijaCPU -BC:/faks/diplomska/kompresijaCPU/build --check-stamp-file C:/faks/diplomska/kompresijaCPU/build/eigen/unsupported/test/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Program Files\CMake\share\cmake-3.30\Modules\CheckCSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\FindCUDA.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\FindCUDA\select_compute_arch.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\FindGLUT.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\FindOpenGL.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\FindPkgConfig.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\FindThreads.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\SelectLibraryConfigurations.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\FindAdolc.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\FindFFTW.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\FindGLEW.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\FindGMP.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\FindGoogleHash.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\FindMPFR.cmake;C:\faks\diplomska\kompresijaCPU\eigen\cmake\FindXsmm.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\ZERO_CHECK.vcxproj">
+      <Project>{4D349682-992D-33B8-ACF3-583CAB8D272F}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\BVH_1.vcxproj">
+      <Project>{F84F25E7-B92D-3EF6-BA65-DE28CE14521E}</Project>
+      <Name>BVH_1</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\BVH_2.vcxproj">
+      <Project>{E1DE6A60-031E-36B2-A81B-DE4EE951C3BC}</Project>
+      <Name>BVH_2</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\BVH_3.vcxproj">
+      <Project>{DC3EC48E-994C-36B3-AFCA-46D88F3396B9}</Project>
+      <Name>BVH_3</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\EulerAngles_1.vcxproj">
+      <Project>{2EBFF3E9-EE2F-3E35-ABD2-547020982865}</Project>
+      <Name>EulerAngles_1</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\EulerAngles_2.vcxproj">
+      <Project>{9668ED78-771B-3CFB-85D6-C0BD8439A1E1}</Project>
+      <Name>EulerAngles_2</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\EulerAngles_3.vcxproj">
+      <Project>{29DB9A3A-B115-3580-86E1-73DC77FC50C8}</Project>
+      <Name>EulerAngles_3</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\EulerAngles_4.vcxproj">
+      <Project>{BF7B5FFD-6C74-3DAD-8F7B-C99F239BEF80}</Project>
+      <Name>EulerAngles_4</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\FFT.vcxproj">
+      <Project>{0B49E4AC-87EB-3D37-AB25-1B5C0D330266}</Project>
+      <Name>FFT</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\NonLinearOptimization.vcxproj">
+      <Project>{2A1D0ED7-98C5-3FF5-920B-9E56AA84B94F}</Project>
+      <Name>NonLinearOptimization</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\NumericalDiff.vcxproj">
+      <Project>{69283C62-1212-3104-A0D0-960A47B6C788}</Project>
+      <Name>NumericalDiff</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\alignedvector3.vcxproj">
+      <Project>{24700AFE-35C8-3C64-8747-AE927B5025B9}</Project>
+      <Name>alignedvector3</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\autodiff_1.vcxproj">
+      <Project>{83EB3BDC-BBB0-3AF3-80BE-DA876F43141E}</Project>
+      <Name>autodiff_1</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\autodiff_2.vcxproj">
+      <Project>{29FC0CF4-AA01-3A2F-B395-803C2AE427CF}</Project>
+      <Name>autodiff_2</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\autodiff_3.vcxproj">
+      <Project>{80246F1A-8455-376F-A244-6A66ED5D195C}</Project>
+      <Name>autodiff_3</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\autodiff_4.vcxproj">
+      <Project>{6F21C246-741A-3960-A3DB-A01B07D87B36}</Project>
+      <Name>autodiff_4</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\autodiff_scalar_1.vcxproj">
+      <Project>{73961DC3-E4F9-32D7-83B4-A5A08077ED00}</Project>
+      <Name>autodiff_scalar_1</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\autodiff_scalar_2.vcxproj">
+      <Project>{9CABC1B9-FBDC-3C65-B479-628AC3DBB68D}</Project>
+      <Name>autodiff_scalar_2</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\autodiff_scalar_3.vcxproj">
+      <Project>{252301D6-73AE-319E-86A3-320F3190745C}</Project>
+      <Name>autodiff_scalar_3</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\autodiff_scalar_4.vcxproj">
+      <Project>{E0A2126E-224C-3054-ACD0-79931032F93B}</Project>
+      <Name>autodiff_scalar_4</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\autodiff_scalar_5.vcxproj">
+      <Project>{D16DC251-56FD-39AE-B831-5F3B7199CCA2}</Project>
+      <Name>autodiff_scalar_5</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\cxx11_tensor_assign.vcxproj">
+      <Project>{FC83DE0E-A091-3C94-8CA3-8D317A6914BF}</Project>
+      <Name>cxx11_tensor_assign</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\cxx11_tensor_casts.vcxproj">
+      <Project>{954E684A-4ED0-3FAC-AB77-405A3D52AE8A}</Project>
+      <Name>cxx11_tensor_casts</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\cxx11_tensor_comparisons.vcxproj">
+      <Project>{8CDDC3A0-8000-3420-9169-E082CC683657}</Project>
+      <Name>cxx11_tensor_comparisons</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\cxx11_tensor_const.vcxproj">
+      <Project>{74949FE6-8DC4-3DF9-A9F6-E5113446043F}</Project>
+      <Name>cxx11_tensor_const</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\cxx11_tensor_dimension.vcxproj">
+      <Project>{B604875A-410A-3D91-A62F-8F50C74C389B}</Project>
+      <Name>cxx11_tensor_dimension</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\cxx11_tensor_empty.vcxproj">
+      <Project>{A2F77E04-09A5-3812-9D78-C59151B72EE0}</Project>
+      <Name>cxx11_tensor_empty</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\cxx11_tensor_forced_eval.vcxproj">
+      <Project>{849101A4-AAC2-3F31-B6F9-169F4C68AAAE}</Project>
+      <Name>cxx11_tensor_forced_eval</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\cxx11_tensor_intdiv_1.vcxproj">
+      <Project>{0DF046FD-0283-3061-B932-93B67B3133C1}</Project>
+      <Name>cxx11_tensor_intdiv_1</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\cxx11_tensor_intdiv_2.vcxproj">
+      <Project>{35956696-3793-3DD6-9C59-2045065471CF}</Project>
+      <Name>cxx11_tensor_intdiv_2</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\cxx11_tensor_intdiv_3.vcxproj">
+      <Project>{4567A377-2982-33E8-B58F-AB68A69C7895}</Project>
+      <Name>cxx11_tensor_intdiv_3</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\cxx11_tensor_intdiv_4.vcxproj">
+      <Project>{58B21E2F-B6CF-3887-9A16-C34FEF427F08}</Project>
+      <Name>cxx11_tensor_intdiv_4</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\cxx11_tensor_intdiv_5.vcxproj">
+      <Project>{945FD3E6-B502-349D-A90E-2A3963E17165}</Project>
+      <Name>cxx11_tensor_intdiv_5</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\cxx11_tensor_intdiv_6.vcxproj">
+      <Project>{FFE74EDE-3DFA-3475-A636-D17118157417}</Project>
+      <Name>cxx11_tensor_intdiv_6</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\cxx11_tensor_intdiv_7.vcxproj">
+      <Project>{A0794366-88D8-3A27-9C1F-94D650352F57}</Project>
+      <Name>cxx11_tensor_intdiv_7</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\cxx11_tensor_io.vcxproj">
+      <Project>{3981205C-560A-3377-9FA0-B64B365D6D56}</Project>
+      <Name>cxx11_tensor_io</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\cxx11_tensor_layout_swap.vcxproj">
+      <Project>{A74956F1-42BC-32B7-80CE-051EC533218D}</Project>
+      <Name>cxx11_tensor_layout_swap</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\cxx11_tensor_map.vcxproj">
+      <Project>{CC3F5224-190F-340C-B788-E91899A52BEC}</Project>
+      <Name>cxx11_tensor_map</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\cxx11_tensor_math.vcxproj">
+      <Project>{60F5DB64-A99B-3F65-A32F-08908FF02FC7}</Project>
+      <Name>cxx11_tensor_math</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\cxx11_tensor_roundings.vcxproj">
+      <Project>{E9F6CB1A-16C0-3320-9D13-013AC201C18A}</Project>
+      <Name>cxx11_tensor_roundings</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\cxx11_tensor_sugar.vcxproj">
+      <Project>{5FF20BAA-5716-3F57-A8FB-644A2384608F}</Project>
+      <Name>cxx11_tensor_sugar</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\cxx11_tensor_uint128_1.vcxproj">
+      <Project>{703C5968-3008-31C9-8C6A-9C3F5882ED17}</Project>
+      <Name>cxx11_tensor_uint128_1</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\cxx11_tensor_uint128_2.vcxproj">
+      <Project>{77D404D0-8B00-3061-A43D-874A58B82E7C}</Project>
+      <Name>cxx11_tensor_uint128_2</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\cxx11_tensor_uint128_3.vcxproj">
+      <Project>{9966F3A9-5442-3999-8C99-C0DD298683D9}</Project>
+      <Name>cxx11_tensor_uint128_3</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\cxx11_tensor_uint128_4.vcxproj">
+      <Project>{EDB7FA3C-5AFC-354C-B2A7-17D16CE0EAD9}</Project>
+      <Name>cxx11_tensor_uint128_4</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\cxx11_tensor_uint128_5.vcxproj">
+      <Project>{1ABA870A-ED79-354D-895C-D8624973A8C7}</Project>
+      <Name>cxx11_tensor_uint128_5</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\cxx11_tensor_uint128_6.vcxproj">
+      <Project>{E97BAAF3-C9F9-3388-AAEF-2EF8FA054F3A}</Project>
+      <Name>cxx11_tensor_uint128_6</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\gmres_1.vcxproj">
+      <Project>{A408F085-0E67-3EC6-920B-0C5EBC7071FC}</Project>
+      <Name>gmres_1</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\gmres_2.vcxproj">
+      <Project>{D1F64BFA-85A1-3564-AD30-E5ABEB3A31E9}</Project>
+      <Name>gmres_2</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\kronecker_product_1.vcxproj">
+      <Project>{98521DB2-0CAD-3609-ABBC-A37F9729E392}</Project>
+      <Name>kronecker_product_1</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\kronecker_product_2.vcxproj">
+      <Project>{0522E9D7-24F3-3491-9272-944A3FC297A6}</Project>
+      <Name>kronecker_product_2</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\levenberg_marquardt.vcxproj">
+      <Project>{6F36F6DC-7B90-3CC6-94FE-955974254D7C}</Project>
+      <Name>levenberg_marquardt</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\matrix_exponential_1.vcxproj">
+      <Project>{23535EC9-8AFE-3668-996F-FC1A207B98EA}</Project>
+      <Name>matrix_exponential_1</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\matrix_exponential_2.vcxproj">
+      <Project>{67A6B0BC-1E5F-3733-BB66-CCC08E334212}</Project>
+      <Name>matrix_exponential_2</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\matrix_exponential_3.vcxproj">
+      <Project>{5725F649-B4DA-3B88-9FAF-99695C05C3C4}</Project>
+      <Name>matrix_exponential_3</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\matrix_exponential_4.vcxproj">
+      <Project>{2E77B177-A440-339B-A2C6-96E2286F1C85}</Project>
+      <Name>matrix_exponential_4</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\matrix_exponential_5.vcxproj">
+      <Project>{2CF47056-DCEF-368E-9734-4DE687F106A1}</Project>
+      <Name>matrix_exponential_5</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\matrix_exponential_6.vcxproj">
+      <Project>{06429C9F-5CA0-3457-882B-B98DE97B9D53}</Project>
+      <Name>matrix_exponential_6</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\matrix_exponential_7.vcxproj">
+      <Project>{9876071E-8B88-3620-B4A4-15A16EAD14EC}</Project>
+      <Name>matrix_exponential_7</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\matrix_exponential_8.vcxproj">
+      <Project>{D48481D2-C0BE-3430-9690-752B84646356}</Project>
+      <Name>matrix_exponential_8</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\matrix_exponential_9.vcxproj">
+      <Project>{C7B2CA8B-293C-35F6-AF05-F95ED03796A8}</Project>
+      <Name>matrix_exponential_9</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\matrix_function_1.vcxproj">
+      <Project>{54C24809-E5EA-3CFD-9C7F-37FF37B62F24}</Project>
+      <Name>matrix_function_1</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\matrix_function_2.vcxproj">
+      <Project>{B57D3655-11C0-35A8-814A-F158F157CD7B}</Project>
+      <Name>matrix_function_2</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\matrix_function_3.vcxproj">
+      <Project>{B98B80FA-8951-3995-96D2-15960B719055}</Project>
+      <Name>matrix_function_3</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\matrix_function_4.vcxproj">
+      <Project>{AB2441B7-5C55-3CE3-9AC2-4E49E99895F8}</Project>
+      <Name>matrix_function_4</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\matrix_function_5.vcxproj">
+      <Project>{DFF7A3D1-B528-3642-9339-761FEE82C92D}</Project>
+      <Name>matrix_function_5</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\matrix_function_6.vcxproj">
+      <Project>{7DE63F51-E632-3890-A951-69D2715EBDF5}</Project>
+      <Name>matrix_function_6</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\matrix_function_7.vcxproj">
+      <Project>{AEBD869E-88FE-3525-95AD-596A688AFECA}</Project>
+      <Name>matrix_function_7</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\matrix_power_1.vcxproj">
+      <Project>{B0B4913B-0057-3A58-8EB5-02D0A4331CA2}</Project>
+      <Name>matrix_power_1</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\matrix_power_10.vcxproj">
+      <Project>{40C1C4A0-5380-3658-BA23-3C1A04379C2C}</Project>
+      <Name>matrix_power_10</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\matrix_power_11.vcxproj">
+      <Project>{8A0E9A86-D670-35A8-9796-C2696B6E39A0}</Project>
+      <Name>matrix_power_11</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\matrix_power_12.vcxproj">
+      <Project>{F96D8EC3-3436-3DCF-9B9A-8BD8D1F685BB}</Project>
+      <Name>matrix_power_12</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\matrix_power_2.vcxproj">
+      <Project>{B88548D7-A4E2-393B-B460-E0AA17135491}</Project>
+      <Name>matrix_power_2</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\matrix_power_3.vcxproj">
+      <Project>{474FCB3B-0794-3236-AD3E-E18992740F51}</Project>
+      <Name>matrix_power_3</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\matrix_power_4.vcxproj">
+      <Project>{6DE701CD-773A-34D0-9D1D-380611E740E9}</Project>
+      <Name>matrix_power_4</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\matrix_power_5.vcxproj">
+      <Project>{4DFE652C-10B8-3DAD-A853-2EB30A4DF406}</Project>
+      <Name>matrix_power_5</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\matrix_power_6.vcxproj">
+      <Project>{4B7DEC60-E80A-3097-96D6-855366CBE111}</Project>
+      <Name>matrix_power_6</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\matrix_power_7.vcxproj">
+      <Project>{C2EBBB32-FE5C-3845-BE19-5E86FD22803C}</Project>
+      <Name>matrix_power_7</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\matrix_power_8.vcxproj">
+      <Project>{D8C31B5E-D99E-3D2C-9205-C9CC5454100A}</Project>
+      <Name>matrix_power_8</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\matrix_power_9.vcxproj">
+      <Project>{895FD7A8-6A4F-39E5-B53F-54A3E20351B6}</Project>
+      <Name>matrix_power_9</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\matrix_square_root_1.vcxproj">
+      <Project>{CBE4DE18-A4A4-3733-A6E7-842D2A77A717}</Project>
+      <Name>matrix_square_root_1</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\matrix_square_root_2.vcxproj">
+      <Project>{B936591C-694B-31E5-80FA-E2FE17D6D51B}</Project>
+      <Name>matrix_square_root_2</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\matrix_square_root_3.vcxproj">
+      <Project>{4F91AB38-C2EB-3E05-8E66-06A708E846FC}</Project>
+      <Name>matrix_square_root_3</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\matrix_square_root_4.vcxproj">
+      <Project>{345896E8-16CA-37A8-A06C-F1BD4316362D}</Project>
+      <Name>matrix_square_root_4</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\matrix_square_root_5.vcxproj">
+      <Project>{B0E259AA-D71A-3D02-B9A0-D88156DD3AD3}</Project>
+      <Name>matrix_square_root_5</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\minres_1.vcxproj">
+      <Project>{6C0C09F6-57C4-311D-BBBC-83433C38ED9E}</Project>
+      <Name>minres_1</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\minres_2.vcxproj">
+      <Project>{5B48B967-A622-3D01-9BBE-0F4C5AF2B44B}</Project>
+      <Name>minres_2</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\polynomialsolver_1.vcxproj">
+      <Project>{EF3B850D-9DB8-305F-8C15-77775D5D8018}</Project>
+      <Name>polynomialsolver_1</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\polynomialsolver_10.vcxproj">
+      <Project>{A1641B20-563C-3EF4-9D72-ED8FEBFA3087}</Project>
+      <Name>polynomialsolver_10</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\polynomialsolver_11.vcxproj">
+      <Project>{979768B2-CFF5-334A-B1B3-B05DC844E350}</Project>
+      <Name>polynomialsolver_11</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\polynomialsolver_12.vcxproj">
+      <Project>{D123778E-8F2E-3E64-9D7B-A7072FAD1352}</Project>
+      <Name>polynomialsolver_12</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\polynomialsolver_2.vcxproj">
+      <Project>{106FF756-4876-3EBF-AA14-E16C1CA3A47A}</Project>
+      <Name>polynomialsolver_2</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\polynomialsolver_3.vcxproj">
+      <Project>{5784BF6B-E24E-3B64-B881-757088FFDB46}</Project>
+      <Name>polynomialsolver_3</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\polynomialsolver_4.vcxproj">
+      <Project>{7DD51BDC-098B-3E41-B16A-CB9A314844D0}</Project>
+      <Name>polynomialsolver_4</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\polynomialsolver_5.vcxproj">
+      <Project>{1BE61BD2-35E4-3067-B548-3F95FA6ABAC0}</Project>
+      <Name>polynomialsolver_5</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\polynomialsolver_6.vcxproj">
+      <Project>{0902B97B-BA21-3738-9EAC-72E4221AD764}</Project>
+      <Name>polynomialsolver_6</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\polynomialsolver_7.vcxproj">
+      <Project>{46F62402-0355-3C08-9333-18D972A65D19}</Project>
+      <Name>polynomialsolver_7</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\polynomialsolver_8.vcxproj">
+      <Project>{A94DFD34-5263-36C1-88A5-2587DEB24AB6}</Project>
+      <Name>polynomialsolver_8</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\polynomialsolver_9.vcxproj">
+      <Project>{07CA7D75-D051-3A03-A1E1-65367CABD967}</Project>
+      <Name>polynomialsolver_9</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\polynomialutils_2.vcxproj">
+      <Project>{339D83E1-3753-3571-A079-7430E4E6C314}</Project>
+      <Name>polynomialutils_2</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\polynomialutils_3.vcxproj">
+      <Project>{3A4BFF13-81BE-32F0-8601-6A4C13801388}</Project>
+      <Name>polynomialutils_3</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\polynomialutils_4.vcxproj">
+      <Project>{A828517C-2BE3-398E-9EDE-F3C6B7F6011D}</Project>
+      <Name>polynomialutils_4</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\polynomialutils_5.vcxproj">
+      <Project>{5A15F310-D7E3-3CDA-B7B5-2AF74CA00FF1}</Project>
+      <Name>polynomialutils_5</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\polynomialutils_6.vcxproj">
+      <Project>{52DB7355-E0AA-360A-BF78-A35B33E25F25}</Project>
+      <Name>polynomialutils_6</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\polynomialutils_7.vcxproj">
+      <Project>{5E44C608-52AD-3996-BA7E-44F4A357330C}</Project>
+      <Name>polynomialutils_7</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\polynomialutils_8.vcxproj">
+      <Project>{79F7DD3E-EB58-3877-BDD2-CDD9206378E4}</Project>
+      <Name>polynomialutils_8</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\polynomialutils_9.vcxproj">
+      <Project>{BD4B0858-C37B-32EF-9962-A7144E9BA6E6}</Project>
+      <Name>polynomialutils_9</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\sparse_extra_1.vcxproj">
+      <Project>{18647A45-F48A-367C-BD4C-97FC5CB1056D}</Project>
+      <Name>sparse_extra_1</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\sparse_extra_2.vcxproj">
+      <Project>{8C1F9ABB-1B75-30F7-B4C2-664EDBEA14E2}</Project>
+      <Name>sparse_extra_2</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\sparse_extra_3.vcxproj">
+      <Project>{53AED937-BB5F-3FB6-AA34-E15201284B5C}</Project>
+      <Name>sparse_extra_3</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\sparse_extra_4.vcxproj">
+      <Project>{EDCEEAD6-A8FA-31C5-AB0A-9C3C7FE3C50B}</Project>
+      <Name>sparse_extra_4</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\special_functions_1.vcxproj">
+      <Project>{A7491AB3-29E8-3367-A741-529755D4D42E}</Project>
+      <Name>special_functions_1</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\special_functions_2.vcxproj">
+      <Project>{0DFA8F8B-5D5D-3E1F-963E-68456A62E043}</Project>
+      <Name>special_functions_2</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\faks\diplomska\kompresijaCPU\build\eigen\unsupported\test\splines.vcxproj">
+      <Project>{4C1FE180-DA5A-3C09-99C1-9668006EA405}</Project>
+      <Name>splines</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\faks\diplomska\kompresijaCPU\build\CMakeFiles\2b802daa767e09f58c2b06e790c4df25\INSTALL_force.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{2345B4A1-702E-3E0D-8889-BB215ED49DFE}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

@@ -13,19 +13,8 @@ set_target_properties(App PROPERTIES
 	CXX_STANDARD 17
 	CXX_STANDARD_REQUIRED ON
 	CXX_EXTENSIONS OFF
-	COMPILE_WARNING_AS_ERROR ON
 )
 
-option(DEV_MODE "Set up development helper settings" ON)
+add_subdirectory(eigen)
 
-if(DEV_MODE)
-	target_compile_definitions(App PRIVATE
-		INPUT_DIR="${CMAKE_CURRENT_SOURCE_DIR}/input"
-		OUTPUT_DIR="${CMAKE_CURRENT_SOURCE_DIR}/output"
-	)
-else()
-	target_compile_definitions(App PRIVATE
-		INPUT_DIR="./input"
-		OUTPUT_DIR="./output"
-	)
-endif()
+target_link_libraries(App PRIVATE eigen)
