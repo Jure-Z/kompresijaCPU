@@ -9610,3 +9610,1226 @@ events:
         
       exitCode: 1
 ...
+
+---
+events:
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/CMakeDetermineVSServicePack.cmake:106 (try_compile)"
+      - "eigen/cmake/EigenDetermineVSServicePack.cmake:8 (_DetermineVSServicePack_CheckVersionWithTryCompile)"
+      - "eigen/cmake/EigenTesting.cmake:545 (EigenDetermineVSServicePack)"
+      - "eigen/cmake/EigenTesting.cmake:670 (ei_get_compilerver)"
+      - "eigen/cmake/EigenConfigureTesting.cmake:8 (ei_set_build_string)"
+      - "eigen/CMakeLists.txt:430 (include)"
+    directories:
+      source: "C:/faks/diplomska/kompresijaCPU/build/CMakeFiles/CMakeScratch/TryCompile-78h71p"
+      binary: "C:/faks/diplomska/kompresijaCPU/build/CMakeFiles/CMakeScratch/TryCompile-78h71p"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /EHsc /EHsc /wd4127 /wd4505 /wd4714"
+      CMAKE_MODULE_PATH: "C:/faks/diplomska/kompresijaCPU/eigen/cmake"
+    buildResult:
+      variable: "_CompileResult"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/faks/diplomska/kompresijaCPU/build/CMakeFiles/CMakeScratch/TryCompile-78h71p'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_021e4.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.11.9+a69bbaaf5 for .NET Framework
+        Build started 15/12/2024 12:27:11.
+        
+        Project "C:\\faks\\diplomska\\kompresijaCPU\\build\\CMakeFiles\\CMakeScratch\\TryCompile-78h71p\\cmTC_021e4.vcxproj" on node 1 (default targets).
+        PrepareForBuild:
+          Creating directory "cmTC_021e4.dir\\Debug\\".
+          Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+          Creating directory "C:\\faks\\diplomska\\kompresijaCPU\\build\\CMakeFiles\\CMakeScratch\\TryCompile-78h71p\\Debug\\".
+          Creating directory "cmTC_021e4.dir\\Debug\\cmTC_021e4.tlog\\".
+        InitializeBuildStatus:
+          Creating "cmTC_021e4.dir\\Debug\\cmTC_021e4.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_021e4.dir\\Debug\\cmTC_021e4.tlog\\unsuccessfulbuild".
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_021e4.dir\\Debug\\\\" /Fd"cmTC_021e4.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /wd4127 /wd4505 /wd4714 /errorReport:queue C:\\faks\\diplomska\\kompresijaCPU\\build\\return0.cc
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.41.34123 for x64
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_021e4.dir\\Debug\\\\" /Fd"cmTC_021e4.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /wd4127 /wd4505 /wd4714 /errorReport:queue C:\\faks\\diplomska\\kompresijaCPU\\build\\return0.cc
+          return0.cc
+        Link:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\faks\\diplomska\\kompresijaCPU\\build\\CMakeFiles\\CMakeScratch\\TryCompile-78h71p\\Debug\\cmTC_021e4.exe" /INCREMENTAL /ILK:"cmTC_021e4.dir\\Debug\\cmTC_021e4.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/faks/diplomska/kompresijaCPU/build/CMakeFiles/CMakeScratch/TryCompile-78h71p/Debug/cmTC_021e4.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/faks/diplomska/kompresijaCPU/build/CMakeFiles/CMakeScratch/TryCompile-78h71p/Debug/cmTC_021e4.lib" /MACHINE:X64  /machine:x64 cmTC_021e4.dir\\Debug\\return0.obj
+          cmTC_021e4.vcxproj -> C:\\faks\\diplomska\\kompresijaCPU\\build\\CMakeFiles\\CMakeScratch\\TryCompile-78h71p\\Debug\\cmTC_021e4.exe
+        FinalizeBuildStatus:
+          Deleting file "cmTC_021e4.dir\\Debug\\cmTC_021e4.tlog\\unsuccessfulbuild".
+          Touching "cmTC_021e4.dir\\Debug\\cmTC_021e4.tlog\\cmTC_021e4.lastbuildstate".
+        Done Building Project "C:\\faks\\diplomska\\kompresijaCPU\\build\\CMakeFiles\\CMakeScratch\\TryCompile-78h71p\\cmTC_021e4.vcxproj" (default targets).
+        
+        Build succeeded.
+            0 Warning(s)
+            0 Error(s)
+        
+        Time Elapsed 00:00:00.42
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/CMakeDetermineFortranCompiler.cmake:186 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "eigen/test/CMakeLists.txt:22 (enable_language)"
+    message: |
+      Compiling the Fortran compiler identification source file "CMakeFortranCompilerId.F" failed.
+      Compiler:  
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      1
+      
+      Microsoft Visual Studio 2022 Version 17.11.5.
+      Copyright (C) Microsoft Corp. All rights reserved.
+      
+      Catastrophic failure (Exception from HRESULT: 0x8000FFFF (E_UNEXPECTED))
+      The operation could not be completed. The parameter is incorrect. 
+      
+      Use:
+      devenv  [solutionfile | projectfile | folder | anyfile.ext]  [switches]
+      
+      The first argument for devenv is usually a solution file, project file or a folder.
+      You can also use any other file as the first argument if you want to have the
+      file open automatically in an editor. When you enter a project file, the IDE
+      looks for an .sln file with the same base name as the project file in the
+      parent directory for the project file. If no such .sln file exists, then the
+      IDE looks for a single .sln file that references the project. If no such single
+      .sln file exists, then the IDE creates an unsaved solution with a default .sln
+      file name that has the same base name as the project file.
+      
+      Command line builds:
+      devenv solutionfile.sln /build [ solutionconfig ] [ /project projectnameorfile [ /projectconfig name ] ]
+      Available command line switches:
+      
+      /Build			Builds the solution or project with the specified solution
+      			configuration. For example "Debug". If multiple platforms
+      			are possible, the configuration name must be enclosed in quotes
+      			and contain platform name. For example: "Debug|Win32".
+      /Clean			Deletes build outputs.
+      /Command		Starts the IDE and executes the command.
+      /Deploy			Builds and then deploys the specified build configuration.
+      /DoNotLoadProjects	Opens the specified solution without loading any projects.
+      /Edit			Opens the specified files in a running instance of this
+      			application. If there are no running instances, it will
+      			start a new instance with a simplified window layout.
+      /LCID			Sets the default language in the IDE for the UI.
+      /Log			Logs IDE activity to the specified file for troubleshooting.
+      /NoVSIP			Disables the VSIP developer's license key for VSIP testing.
+      /Out			Appends the build log to a specified file.
+      /Project		Specifies the project to build, clean, or deploy.
+      			Must be used with /Build, /Rebuild, /Clean, or /Deploy.
+      /ProjectConfig		Overrides the project configuration specified in the solution
+      			configuration. For example "Debug". If multiple platforms are
+      			possible, the configuration name must be enclosed in quotes
+      			and contain platform name. For example: "Debug|Win32".
+      			Must be used with /Project.
+      /Rebuild		Cleans and then builds the solution or project with the
+      			specified configuration.
+      /ResetSettings		Restores the IDE's default settings, optionally resets to
+      			the specified VSSettings file.
+      /ResetSkipPkgs		Clears all SkipLoading tags added to VSPackages.
+      /Run			Compiles and runs the specified solution.
+      /RunExit		Compiles and runs the specified solution then closes the IDE.
+      /SafeMode		Launches the IDE in safe mode loading minimal windows.
+      /Upgrade		Upgrades the project or the solution and all projects in it.
+      			A backup of these files will be created as appropriate. Please
+      			see Help on 'Visual Studio Conversion Wizard' for more
+      			information on the backup process.
+      
+      Product-specific switches:
+      
+      /debugexe	Open the specified executable to be debugged. The remainder of 
+      		the command line is passed to this executable as its arguments.
+      /diff		Compares two files.  Takes four parameters:
+      		SourceFile, TargetFile, SourceDisplayName(optional),
+      		TargetDisplayName(optional)
+      /TfsLink	Opens Team Explorer and launches a viewer for the 
+      		provided artifact URI if one is registered.
+      /useenv		Use PATH, INCLUDE, LIBPATH, and LIB environment variables
+      		instead of IDE paths for VC++ builds.
+      
+      To attach the debugger from the command line, use:
+      	VsJITDebugger.exe -p <pid>
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/CMakeDetermineFortranCompiler.cmake:186 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "eigen/test/CMakeLists.txt:22 (enable_language)"
+    message: |
+      Compiling the Fortran compiler identification source file "CMakeFortranCompilerId.F" failed.
+      Compiler:  
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      1
+      
+      Microsoft Visual Studio 2022 Version 17.11.5.
+      Copyright (C) Microsoft Corp. All rights reserved.
+      
+      Catastrophic failure (Exception from HRESULT: 0x8000FFFF (E_UNEXPECTED))
+      The operation could not be completed. The parameter is incorrect. 
+      
+      Use:
+      devenv  [solutionfile | projectfile | folder | anyfile.ext]  [switches]
+      
+      The first argument for devenv is usually a solution file, project file or a folder.
+      You can also use any other file as the first argument if you want to have the
+      file open automatically in an editor. When you enter a project file, the IDE
+      looks for an .sln file with the same base name as the project file in the
+      parent directory for the project file. If no such .sln file exists, then the
+      IDE looks for a single .sln file that references the project. If no such single
+      .sln file exists, then the IDE creates an unsaved solution with a default .sln
+      file name that has the same base name as the project file.
+      
+      Command line builds:
+      devenv solutionfile.sln /build [ solutionconfig ] [ /project projectnameorfile [ /projectconfig name ] ]
+      Available command line switches:
+      
+      /Build			Builds the solution or project with the specified solution
+      			configuration. For example "Debug". If multiple platforms
+      			are possible, the configuration name must be enclosed in quotes
+      			and contain platform name. For example: "Debug|Win32".
+      /Clean			Deletes build outputs.
+      /Command		Starts the IDE and executes the command.
+      /Deploy			Builds and then deploys the specified build configuration.
+      /DoNotLoadProjects	Opens the specified solution without loading any projects.
+      /Edit			Opens the specified files in a running instance of this
+      			application. If there are no running instances, it will
+      			start a new instance with a simplified window layout.
+      /LCID			Sets the default language in the IDE for the UI.
+      /Log			Logs IDE activity to the specified file for troubleshooting.
+      /NoVSIP			Disables the VSIP developer's license key for VSIP testing.
+      /Out			Appends the build log to a specified file.
+      /Project		Specifies the project to build, clean, or deploy.
+      			Must be used with /Build, /Rebuild, /Clean, or /Deploy.
+      /ProjectConfig		Overrides the project configuration specified in the solution
+      			configuration. For example "Debug". If multiple platforms are
+      			possible, the configuration name must be enclosed in quotes
+      			and contain platform name. For example: "Debug|Win32".
+      			Must be used with /Project.
+      /Rebuild		Cleans and then builds the solution or project with the
+      			specified configuration.
+      /ResetSettings		Restores the IDE's default settings, optionally resets to
+      			the specified VSSettings file.
+      /ResetSkipPkgs		Clears all SkipLoading tags added to VSPackages.
+      /Run			Compiles and runs the specified solution.
+      /RunExit		Compiles and runs the specified solution then closes the IDE.
+      /SafeMode		Launches the IDE in safe mode loading minimal windows.
+      /Upgrade		Upgrades the project or the solution and all projects in it.
+      			A backup of these files will be created as appropriate. Please
+      			see Help on 'Visual Studio Conversion Wizard' for more
+      			information on the backup process.
+      
+      Product-specific switches:
+      
+      /debugexe	Open the specified executable to be debugged. The remainder of 
+      		the command line is passed to this executable as its arguments.
+      /diff		Compares two files.  Takes four parameters:
+      		SourceFile, TargetFile, SourceDisplayName(optional),
+      		TargetDisplayName(optional)
+      /TfsLink	Opens Team Explorer and launches a viewer for the 
+      		provided artifact URI if one is registered.
+      /useenv		Use PATH, INCLUDE, LIBPATH, and LIB environment variables
+      		instead of IDE paths for VC++ builds.
+      
+      To attach the debugger from the command line, use:
+      	VsJITDebugger.exe -p <pid>
+      
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/FindMPI.cmake:1282 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/FindMPI.cmake:1326 (_MPI_try_staged_settings)"
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/FindMPI.cmake:1649 (_MPI_check_lang_works)"
+      - "eigen/cmake/FindPastix.cmake:235 (find_package)"
+      - "eigen/test/CMakeLists.txt:94 (find_package)"
+    description: "The MPI test test_mpi for C in mode normal"
+    directories:
+      source: "C:/faks/diplomska/kompresijaCPU/build/CMakeFiles/CMakeScratch/TryCompile-11n51v"
+      binary: "C:/faks/diplomska/kompresijaCPU/build/CMakeFiles/CMakeScratch/TryCompile-11n51v"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_MODULE_PATH: "C:/faks/diplomska/kompresijaCPU/eigen/cmake"
+    buildResult:
+      variable: "MPI_RESULT_C_test_mpi_normal"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/faks/diplomska/kompresijaCPU/build/CMakeFiles/CMakeScratch/TryCompile-11n51v'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_49501.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.11.9+a69bbaaf5 for .NET Framework
+        Build started 15/12/2024 12:27:31.
+        
+        Project "C:\\faks\\diplomska\\kompresijaCPU\\build\\CMakeFiles\\CMakeScratch\\TryCompile-11n51v\\cmTC_49501.vcxproj" on node 1 (default targets).
+        PrepareForBuild:
+          Creating directory "cmTC_49501.dir\\Debug\\".
+          Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+          Creating directory "C:\\faks\\diplomska\\kompresijaCPU\\build\\CMakeFiles\\CMakeScratch\\TryCompile-11n51v\\Debug\\".
+          Creating directory "cmTC_49501.dir\\Debug\\cmTC_49501.tlog\\".
+        InitializeBuildStatus:
+          Creating "cmTC_49501.dir\\Debug\\cmTC_49501.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_49501.dir\\Debug\\cmTC_49501.tlog\\unsuccessfulbuild".
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_49501.dir\\Debug\\\\" /Fd"cmTC_49501.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\faks\\diplomska\\kompresijaCPU\\build\\CMakeFiles\\CMakeScratch\\TryCompile-11n51v\\test_mpi.c"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.41.34123 for x64
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_49501.dir\\Debug\\\\" /Fd"cmTC_49501.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\faks\\diplomska\\kompresijaCPU\\build\\CMakeFiles\\CMakeScratch\\TryCompile-11n51v\\test_mpi.c"
+          test_mpi.c
+        C:\\faks\\diplomska\\kompresijaCPU\\build\\CMakeFiles\\CMakeScratch\\TryCompile-11n51v\\test_mpi.c(1,10): error C1083: Cannot open include file: 'mpi.h': No such file or directory [C:\\faks\\diplomska\\kompresijaCPU\\build\\CMakeFiles\\CMakeScratch\\TryCompile-11n51v\\cmTC_49501.vcxproj]
+        Done Building Project "C:\\faks\\diplomska\\kompresijaCPU\\build\\CMakeFiles\\CMakeScratch\\TryCompile-11n51v\\cmTC_49501.vcxproj" (default targets) -- FAILED.
+        
+        Build FAILED.
+        
+        "C:\\faks\\diplomska\\kompresijaCPU\\build\\CMakeFiles\\CMakeScratch\\TryCompile-11n51v\\cmTC_49501.vcxproj" (default target) (1) ->
+        (ClCompile target) -> 
+          C:\\faks\\diplomska\\kompresijaCPU\\build\\CMakeFiles\\CMakeScratch\\TryCompile-11n51v\\test_mpi.c(1,10): error C1083: Cannot open include file: 'mpi.h': No such file or directory [C:\\faks\\diplomska\\kompresijaCPU\\build\\CMakeFiles\\CMakeScratch\\TryCompile-11n51v\\cmTC_49501.vcxproj]
+        
+            0 Warning(s)
+            1 Error(s)
+        
+        Time Elapsed 00:00:00.23
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/FindMPI.cmake:1282 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/FindMPI.cmake:1326 (_MPI_try_staged_settings)"
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/FindMPI.cmake:1649 (_MPI_check_lang_works)"
+      - "eigen/cmake/FindPastix.cmake:235 (find_package)"
+      - "eigen/test/CMakeLists.txt:94 (find_package)"
+    description: "The MPI test test_mpi for CXX in mode normal"
+    directories:
+      source: "C:/faks/diplomska/kompresijaCPU/build/CMakeFiles/CMakeScratch/TryCompile-sh7591"
+      binary: "C:/faks/diplomska/kompresijaCPU/build/CMakeFiles/CMakeScratch/TryCompile-sh7591"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /EHsc /EHsc /wd4127 /wd4505 /wd4714 /D_CRT_SECURE_NO_WARNINGS /D_SCL_SECURE_NO_WARNINGS"
+      CMAKE_MODULE_PATH: "C:/faks/diplomska/kompresijaCPU/eigen/cmake"
+    buildResult:
+      variable: "MPI_RESULT_CXX_test_mpi_normal"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/faks/diplomska/kompresijaCPU/build/CMakeFiles/CMakeScratch/TryCompile-sh7591'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_33199.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.11.9+a69bbaaf5 for .NET Framework
+        Build started 15/12/2024 12:27:32.
+        
+        Project "C:\\faks\\diplomska\\kompresijaCPU\\build\\CMakeFiles\\CMakeScratch\\TryCompile-sh7591\\cmTC_33199.vcxproj" on node 1 (default targets).
+        PrepareForBuild:
+          Creating directory "cmTC_33199.dir\\Debug\\".
+          Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+          Creating directory "C:\\faks\\diplomska\\kompresijaCPU\\build\\CMakeFiles\\CMakeScratch\\TryCompile-sh7591\\Debug\\".
+          Creating directory "cmTC_33199.dir\\Debug\\cmTC_33199.tlog\\".
+        InitializeBuildStatus:
+          Creating "cmTC_33199.dir\\Debug\\cmTC_33199.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_33199.dir\\Debug\\cmTC_33199.tlog\\unsuccessfulbuild".
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D _CRT_SECURE_NO_WARNINGS /D _SCL_SECURE_NO_WARNINGS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_33199.dir\\Debug\\\\" /Fd"cmTC_33199.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /wd4127 /wd4505 /wd4714 /errorReport:queue "C:\\faks\\diplomska\\kompresijaCPU\\build\\CMakeFiles\\CMakeScratch\\TryCompile-sh7591\\test_mpi.cpp"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.41.34123 for x64
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D _CRT_SECURE_NO_WARNINGS /D _SCL_SECURE_NO_WARNINGS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_33199.dir\\Debug\\\\" /Fd"cmTC_33199.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /wd4127 /wd4505 /wd4714 /errorReport:queue "C:\\faks\\diplomska\\kompresijaCPU\\build\\CMakeFiles\\CMakeScratch\\TryCompile-sh7591\\test_mpi.cpp"
+          test_mpi.cpp
+        C:\\faks\\diplomska\\kompresijaCPU\\build\\CMakeFiles\\CMakeScratch\\TryCompile-sh7591\\test_mpi.cpp(1,10): error C1083: Cannot open include file: 'mpi.h': No such file or directory [C:\\faks\\diplomska\\kompresijaCPU\\build\\CMakeFiles\\CMakeScratch\\TryCompile-sh7591\\cmTC_33199.vcxproj]
+        Done Building Project "C:\\faks\\diplomska\\kompresijaCPU\\build\\CMakeFiles\\CMakeScratch\\TryCompile-sh7591\\cmTC_33199.vcxproj" (default targets) -- FAILED.
+        
+        Build FAILED.
+        
+        "C:\\faks\\diplomska\\kompresijaCPU\\build\\CMakeFiles\\CMakeScratch\\TryCompile-sh7591\\cmTC_33199.vcxproj" (default target) (1) ->
+        (ClCompile target) -> 
+          C:\\faks\\diplomska\\kompresijaCPU\\build\\CMakeFiles\\CMakeScratch\\TryCompile-sh7591\\test_mpi.cpp(1,10): error C1083: Cannot open include file: 'mpi.h': No such file or directory [C:\\faks\\diplomska\\kompresijaCPU\\build\\CMakeFiles\\CMakeScratch\\TryCompile-sh7591\\cmTC_33199.vcxproj]
+        
+            0 Warning(s)
+            1 Error(s)
+        
+        Time Elapsed 00:00:00.22
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/FindMPI.cmake:1282 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/FindMPI.cmake:1301 (_MPI_try_staged_settings)"
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/FindMPI.cmake:1649 (_MPI_check_lang_works)"
+      - "eigen/cmake/FindPastix.cmake:235 (find_package)"
+      - "eigen/test/CMakeLists.txt:94 (find_package)"
+    description: "The MPI test test_mpi for Fortran in mode F77_HEADER"
+    directories:
+      source: "C:/faks/diplomska/kompresijaCPU/build/CMakeFiles/CMakeScratch/TryCompile-24e89d"
+      binary: "C:/faks/diplomska/kompresijaCPU/build/CMakeFiles/CMakeScratch/TryCompile-24e89d"
+    cmakeVariables:
+      CMAKE_Fortran_FLAGS: ""
+      CMAKE_MODULE_PATH: "C:/faks/diplomska/kompresijaCPU/eigen/cmake"
+    buildResult:
+      variable: "MPI_RESULT_Fortran_test_mpi_F77_HEADER"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/faks/diplomska/kompresijaCPU/build/CMakeFiles/CMakeScratch/TryCompile-24e89d'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/devenv.com" CMAKE_TRY_COMPILE.sln /build Debug /project cmTC_5af48
+        
+        Microsoft Visual Studio 2022 Version 17.11.5.
+        Copyright (C) Microsoft Corp. All rights reserved.
+        
+        The operation could not be completed. The parameter is incorrect. 
+        
+        Use:
+        devenv  [solutionfile | projectfile | folder | anyfile.ext]  [switches]
+        
+        The first argument for devenv is usually a solution file, project file or a folder.
+        You can also use any other file as the first argument if you want to have the
+        file open automatically in an editor. When you enter a project file, the IDE
+        looks for an .sln file with the same base name as the project file in the
+        parent directory for the project file. If no such .sln file exists, then the
+        IDE looks for a single .sln file that references the project. If no such single
+        .sln file exists, then the IDE creates an unsaved solution with a default .sln
+        file name that has the same base name as the project file.
+        
+        Command line builds:
+        devenv solutionfile.sln /build [ solutionconfig ] [ /project projectnameorfile [ /projectconfig name ] ]
+        Available command line switches:
+        
+        /Build			Builds the solution or project with the specified solution
+        			configuration. For example "Debug". If multiple platforms
+        			are possible, the configuration name must be enclosed in quotes
+        			and contain platform name. For example: "Debug|Win32".
+        /Clean			Deletes build outputs.
+        /Command		Starts the IDE and executes the command.
+        /Deploy			Builds and then deploys the specified build configuration.
+        /DoNotLoadProjects	Opens the specified solution without loading any projects.
+        /Edit			Opens the specified files in a running instance of this
+        			application. If there are no running instances, it will
+        			start a new instance with a simplified window layout.
+        /LCID			Sets the default language in the IDE for the UI.
+        /Log			Logs IDE activity to the specified file for troubleshooting.
+        /NoVSIP			Disables the VSIP developer's license key for VSIP testing.
+        /Out			Appends the build log to a specified file.
+        /Project		Specifies the project to build, clean, or deploy.
+        			Must be used with /Build, /Rebuild, /Clean, or /Deploy.
+        /ProjectConfig		Overrides the project configuration specified in the solution
+        			configuration. For example "Debug". If multiple platforms are
+        			possible, the configuration name must be enclosed in quotes
+        			and contain platform name. For example: "Debug|Win32".
+        			Must be used with /Project.
+        /Rebuild		Cleans and then builds the solution or project with the
+        			specified configuration.
+        /ResetSettings		Restores the IDE's default settings, optionally resets to
+        			the specified VSSettings file.
+        /ResetSkipPkgs		Clears all SkipLoading tags added to VSPackages.
+        /Run			Compiles and runs the specified solution.
+        /RunExit		Compiles and runs the specified solution then closes the IDE.
+        /SafeMode		Launches the IDE in safe mode loading minimal windows.
+        /Upgrade		Upgrades the project or the solution and all projects in it.
+        			A backup of these files will be created as appropriate. Please
+        			see Help on 'Visual Studio Conversion Wizard' for more
+        			information on the backup process.
+        
+        Product-specific switches:
+        
+        /debugexe	Open the specified executable to be debugged. The remainder of 
+        		the command line is passed to this executable as its arguments.
+        /diff		Compares two files.  Takes four parameters:
+        		SourceFile, TargetFile, SourceDisplayName(optional),
+        		TargetDisplayName(optional)
+        /TfsLink	Opens Team Explorer and launches a viewer for the 
+        		provided artifact URI if one is registered.
+        /useenv		Use PATH, INCLUDE, LIBPATH, and LIB environment variables
+        		instead of IDE paths for VC++ builds.
+        
+        To attach the debugger from the command line, use:
+        	VsJITDebugger.exe -p <pid>
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/FindMPI.cmake:1282 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/FindMPI.cmake:1302 (_MPI_try_staged_settings)"
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/FindMPI.cmake:1649 (_MPI_check_lang_works)"
+      - "eigen/cmake/FindPastix.cmake:235 (find_package)"
+      - "eigen/test/CMakeLists.txt:94 (find_package)"
+    description: "The MPI test test_mpi for Fortran in mode F90_MODULE"
+    directories:
+      source: "C:/faks/diplomska/kompresijaCPU/build/CMakeFiles/CMakeScratch/TryCompile-103mch"
+      binary: "C:/faks/diplomska/kompresijaCPU/build/CMakeFiles/CMakeScratch/TryCompile-103mch"
+    cmakeVariables:
+      CMAKE_Fortran_FLAGS: ""
+      CMAKE_MODULE_PATH: "C:/faks/diplomska/kompresijaCPU/eigen/cmake"
+    buildResult:
+      variable: "MPI_RESULT_Fortran_test_mpi_F90_MODULE"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/faks/diplomska/kompresijaCPU/build/CMakeFiles/CMakeScratch/TryCompile-103mch'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/devenv.com" CMAKE_TRY_COMPILE.sln /build Debug /project cmTC_d57af
+        
+        Microsoft Visual Studio 2022 Version 17.11.5.
+        Copyright (C) Microsoft Corp. All rights reserved.
+        
+        The operation could not be completed. The parameter is incorrect. 
+        
+        Use:
+        devenv  [solutionfile | projectfile | folder | anyfile.ext]  [switches]
+        
+        The first argument for devenv is usually a solution file, project file or a folder.
+        You can also use any other file as the first argument if you want to have the
+        file open automatically in an editor. When you enter a project file, the IDE
+        looks for an .sln file with the same base name as the project file in the
+        parent directory for the project file. If no such .sln file exists, then the
+        IDE looks for a single .sln file that references the project. If no such single
+        .sln file exists, then the IDE creates an unsaved solution with a default .sln
+        file name that has the same base name as the project file.
+        
+        Command line builds:
+        devenv solutionfile.sln /build [ solutionconfig ] [ /project projectnameorfile [ /projectconfig name ] ]
+        Available command line switches:
+        
+        /Build			Builds the solution or project with the specified solution
+        			configuration. For example "Debug". If multiple platforms
+        			are possible, the configuration name must be enclosed in quotes
+        			and contain platform name. For example: "Debug|Win32".
+        /Clean			Deletes build outputs.
+        /Command		Starts the IDE and executes the command.
+        /Deploy			Builds and then deploys the specified build configuration.
+        /DoNotLoadProjects	Opens the specified solution without loading any projects.
+        /Edit			Opens the specified files in a running instance of this
+        			application. If there are no running instances, it will
+        			start a new instance with a simplified window layout.
+        /LCID			Sets the default language in the IDE for the UI.
+        /Log			Logs IDE activity to the specified file for troubleshooting.
+        /NoVSIP			Disables the VSIP developer's license key for VSIP testing.
+        /Out			Appends the build log to a specified file.
+        /Project		Specifies the project to build, clean, or deploy.
+        			Must be used with /Build, /Rebuild, /Clean, or /Deploy.
+        /ProjectConfig		Overrides the project configuration specified in the solution
+        			configuration. For example "Debug". If multiple platforms are
+        			possible, the configuration name must be enclosed in quotes
+        			and contain platform name. For example: "Debug|Win32".
+        			Must be used with /Project.
+        /Rebuild		Cleans and then builds the solution or project with the
+        			specified configuration.
+        /ResetSettings		Restores the IDE's default settings, optionally resets to
+        			the specified VSSettings file.
+        /ResetSkipPkgs		Clears all SkipLoading tags added to VSPackages.
+        /Run			Compiles and runs the specified solution.
+        /RunExit		Compiles and runs the specified solution then closes the IDE.
+        /SafeMode		Launches the IDE in safe mode loading minimal windows.
+        /Upgrade		Upgrades the project or the solution and all projects in it.
+        			A backup of these files will be created as appropriate. Please
+        			see Help on 'Visual Studio Conversion Wizard' for more
+        			information on the backup process.
+        
+        Product-specific switches:
+        
+        /debugexe	Open the specified executable to be debugged. The remainder of 
+        		the command line is passed to this executable as its arguments.
+        /diff		Compares two files.  Takes four parameters:
+        		SourceFile, TargetFile, SourceDisplayName(optional),
+        		TargetDisplayName(optional)
+        /TfsLink	Opens Team Explorer and launches a viewer for the 
+        		provided artifact URI if one is registered.
+        /useenv		Use PATH, INCLUDE, LIBPATH, and LIB environment variables
+        		instead of IDE paths for VC++ builds.
+        
+        To attach the debugger from the command line, use:
+        	VsJITDebugger.exe -p <pid>
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/FindMPI.cmake:1282 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/FindMPI.cmake:1303 (_MPI_try_staged_settings)"
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/FindMPI.cmake:1649 (_MPI_check_lang_works)"
+      - "eigen/cmake/FindPastix.cmake:235 (find_package)"
+      - "eigen/test/CMakeLists.txt:94 (find_package)"
+    description: "The MPI test test_mpi for Fortran in mode F08_MODULE"
+    directories:
+      source: "C:/faks/diplomska/kompresijaCPU/build/CMakeFiles/CMakeScratch/TryCompile-1y57r6"
+      binary: "C:/faks/diplomska/kompresijaCPU/build/CMakeFiles/CMakeScratch/TryCompile-1y57r6"
+    cmakeVariables:
+      CMAKE_Fortran_FLAGS: ""
+      CMAKE_MODULE_PATH: "C:/faks/diplomska/kompresijaCPU/eigen/cmake"
+    buildResult:
+      variable: "MPI_RESULT_Fortran_test_mpi_F08_MODULE"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/faks/diplomska/kompresijaCPU/build/CMakeFiles/CMakeScratch/TryCompile-1y57r6'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/devenv.com" CMAKE_TRY_COMPILE.sln /build Debug /project cmTC_17be2
+        
+        Microsoft Visual Studio 2022 Version 17.11.5.
+        Copyright (C) Microsoft Corp. All rights reserved.
+        
+        The operation could not be completed. The parameter is incorrect. 
+        
+        Use:
+        devenv  [solutionfile | projectfile | folder | anyfile.ext]  [switches]
+        
+        The first argument for devenv is usually a solution file, project file or a folder.
+        You can also use any other file as the first argument if you want to have the
+        file open automatically in an editor. When you enter a project file, the IDE
+        looks for an .sln file with the same base name as the project file in the
+        parent directory for the project file. If no such .sln file exists, then the
+        IDE looks for a single .sln file that references the project. If no such single
+        .sln file exists, then the IDE creates an unsaved solution with a default .sln
+        file name that has the same base name as the project file.
+        
+        Command line builds:
+        devenv solutionfile.sln /build [ solutionconfig ] [ /project projectnameorfile [ /projectconfig name ] ]
+        Available command line switches:
+        
+        /Build			Builds the solution or project with the specified solution
+        			configuration. For example "Debug". If multiple platforms
+        			are possible, the configuration name must be enclosed in quotes
+        			and contain platform name. For example: "Debug|Win32".
+        /Clean			Deletes build outputs.
+        /Command		Starts the IDE and executes the command.
+        /Deploy			Builds and then deploys the specified build configuration.
+        /DoNotLoadProjects	Opens the specified solution without loading any projects.
+        /Edit			Opens the specified files in a running instance of this
+        			application. If there are no running instances, it will
+        			start a new instance with a simplified window layout.
+        /LCID			Sets the default language in the IDE for the UI.
+        /Log			Logs IDE activity to the specified file for troubleshooting.
+        /NoVSIP			Disables the VSIP developer's license key for VSIP testing.
+        /Out			Appends the build log to a specified file.
+        /Project		Specifies the project to build, clean, or deploy.
+        			Must be used with /Build, /Rebuild, /Clean, or /Deploy.
+        /ProjectConfig		Overrides the project configuration specified in the solution
+        			configuration. For example "Debug". If multiple platforms are
+        			possible, the configuration name must be enclosed in quotes
+        			and contain platform name. For example: "Debug|Win32".
+        			Must be used with /Project.
+        /Rebuild		Cleans and then builds the solution or project with the
+        			specified configuration.
+        /ResetSettings		Restores the IDE's default settings, optionally resets to
+        			the specified VSSettings file.
+        /ResetSkipPkgs		Clears all SkipLoading tags added to VSPackages.
+        /Run			Compiles and runs the specified solution.
+        /RunExit		Compiles and runs the specified solution then closes the IDE.
+        /SafeMode		Launches the IDE in safe mode loading minimal windows.
+        /Upgrade		Upgrades the project or the solution and all projects in it.
+        			A backup of these files will be created as appropriate. Please
+        			see Help on 'Visual Studio Conversion Wizard' for more
+        			information on the backup process.
+        
+        Product-specific switches:
+        
+        /debugexe	Open the specified executable to be debugged. The remainder of 
+        		the command line is passed to this executable as its arguments.
+        /diff		Compares two files.  Takes four parameters:
+        		SourceFile, TargetFile, SourceDisplayName(optional),
+        		TargetDisplayName(optional)
+        /TfsLink	Opens Team Explorer and launches a viewer for the 
+        		provided artifact URI if one is registered.
+        /useenv		Use PATH, INCLUDE, LIBPATH, and LIB environment variables
+        		instead of IDE paths for VC++ builds.
+        
+        To attach the debugger from the command line, use:
+        	VsJITDebugger.exe -p <pid>
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/FindMPI.cmake:1282 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/FindMPI.cmake:1319 (_MPI_try_staged_settings)"
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/FindMPI.cmake:1649 (_MPI_check_lang_works)"
+      - "eigen/cmake/FindPastix.cmake:235 (find_package)"
+      - "eigen/test/CMakeLists.txt:94 (find_package)"
+    description: "The MPI test test_mpi for Fortran in mode F77_HEADER_NOKIND"
+    directories:
+      source: "C:/faks/diplomska/kompresijaCPU/build/CMakeFiles/CMakeScratch/TryCompile-bmchqb"
+      binary: "C:/faks/diplomska/kompresijaCPU/build/CMakeFiles/CMakeScratch/TryCompile-bmchqb"
+    cmakeVariables:
+      CMAKE_Fortran_FLAGS: ""
+      CMAKE_MODULE_PATH: "C:/faks/diplomska/kompresijaCPU/eigen/cmake"
+    buildResult:
+      variable: "MPI_RESULT_Fortran_test_mpi_F77_HEADER_NOKIND"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/faks/diplomska/kompresijaCPU/build/CMakeFiles/CMakeScratch/TryCompile-bmchqb'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/devenv.com" CMAKE_TRY_COMPILE.sln /build Debug /project cmTC_53bbe
+        
+        Microsoft Visual Studio 2022 Version 17.11.5.
+        Copyright (C) Microsoft Corp. All rights reserved.
+        
+        The operation could not be completed. The parameter is incorrect. 
+        
+        Use:
+        devenv  [solutionfile | projectfile | folder | anyfile.ext]  [switches]
+        
+        The first argument for devenv is usually a solution file, project file or a folder.
+        You can also use any other file as the first argument if you want to have the
+        file open automatically in an editor. When you enter a project file, the IDE
+        looks for an .sln file with the same base name as the project file in the
+        parent directory for the project file. If no such .sln file exists, then the
+        IDE looks for a single .sln file that references the project. If no such single
+        .sln file exists, then the IDE creates an unsaved solution with a default .sln
+        file name that has the same base name as the project file.
+        
+        Command line builds:
+        devenv solutionfile.sln /build [ solutionconfig ] [ /project projectnameorfile [ /projectconfig name ] ]
+        Available command line switches:
+        
+        /Build			Builds the solution or project with the specified solution
+        			configuration. For example "Debug". If multiple platforms
+        			are possible, the configuration name must be enclosed in quotes
+        			and contain platform name. For example: "Debug|Win32".
+        /Clean			Deletes build outputs.
+        /Command		Starts the IDE and executes the command.
+        /Deploy			Builds and then deploys the specified build configuration.
+        /DoNotLoadProjects	Opens the specified solution without loading any projects.
+        /Edit			Opens the specified files in a running instance of this
+        			application. If there are no running instances, it will
+        			start a new instance with a simplified window layout.
+        /LCID			Sets the default language in the IDE for the UI.
+        /Log			Logs IDE activity to the specified file for troubleshooting.
+        /NoVSIP			Disables the VSIP developer's license key for VSIP testing.
+        /Out			Appends the build log to a specified file.
+        /Project		Specifies the project to build, clean, or deploy.
+        			Must be used with /Build, /Rebuild, /Clean, or /Deploy.
+        /ProjectConfig		Overrides the project configuration specified in the solution
+        			configuration. For example "Debug". If multiple platforms are
+        			possible, the configuration name must be enclosed in quotes
+        			and contain platform name. For example: "Debug|Win32".
+        			Must be used with /Project.
+        /Rebuild		Cleans and then builds the solution or project with the
+        			specified configuration.
+        /ResetSettings		Restores the IDE's default settings, optionally resets to
+        			the specified VSSettings file.
+        /ResetSkipPkgs		Clears all SkipLoading tags added to VSPackages.
+        /Run			Compiles and runs the specified solution.
+        /RunExit		Compiles and runs the specified solution then closes the IDE.
+        /SafeMode		Launches the IDE in safe mode loading minimal windows.
+        /Upgrade		Upgrades the project or the solution and all projects in it.
+        			A backup of these files will be created as appropriate. Please
+        			see Help on 'Visual Studio Conversion Wizard' for more
+        			information on the backup process.
+        
+        Product-specific switches:
+        
+        /debugexe	Open the specified executable to be debugged. The remainder of 
+        		the command line is passed to this executable as its arguments.
+        /diff		Compares two files.  Takes four parameters:
+        		SourceFile, TargetFile, SourceDisplayName(optional),
+        		TargetDisplayName(optional)
+        /TfsLink	Opens Team Explorer and launches a viewer for the 
+        		provided artifact URI if one is registered.
+        /useenv		Use PATH, INCLUDE, LIBPATH, and LIB environment variables
+        		instead of IDE paths for VC++ builds.
+        
+        To attach the debugger from the command line, use:
+        	VsJITDebugger.exe -p <pid>
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/FindMPI.cmake:1282 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/FindMPI.cmake:1326 (_MPI_try_staged_settings)"
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/FindMPI.cmake:1649 (_MPI_check_lang_works)"
+      - "eigen/cmake/FindPTSCOTCH.cmake:95 (find_package)"
+      - "eigen/cmake/FindPastix.cmake:306 (find_package)"
+      - "eigen/test/CMakeLists.txt:94 (find_package)"
+    description: "The MPI test test_mpi for C in mode normal"
+    directories:
+      source: "C:/faks/diplomska/kompresijaCPU/build/CMakeFiles/CMakeScratch/TryCompile-srf7pf"
+      binary: "C:/faks/diplomska/kompresijaCPU/build/CMakeFiles/CMakeScratch/TryCompile-srf7pf"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_MODULE_PATH: "C:/faks/diplomska/kompresijaCPU/eigen/cmake"
+    buildResult:
+      variable: "MPI_RESULT_C_test_mpi_normal"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/faks/diplomska/kompresijaCPU/build/CMakeFiles/CMakeScratch/TryCompile-srf7pf'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_a50ac.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.11.9+a69bbaaf5 for .NET Framework
+        Build started 15/12/2024 12:28:03.
+        
+        Project "C:\\faks\\diplomska\\kompresijaCPU\\build\\CMakeFiles\\CMakeScratch\\TryCompile-srf7pf\\cmTC_a50ac.vcxproj" on node 1 (default targets).
+        PrepareForBuild:
+          Creating directory "cmTC_a50ac.dir\\Debug\\".
+          Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+          Creating directory "C:\\faks\\diplomska\\kompresijaCPU\\build\\CMakeFiles\\CMakeScratch\\TryCompile-srf7pf\\Debug\\".
+          Creating directory "cmTC_a50ac.dir\\Debug\\cmTC_a50ac.tlog\\".
+        InitializeBuildStatus:
+          Creating "cmTC_a50ac.dir\\Debug\\cmTC_a50ac.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_a50ac.dir\\Debug\\cmTC_a50ac.tlog\\unsuccessfulbuild".
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_a50ac.dir\\Debug\\\\" /Fd"cmTC_a50ac.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\faks\\diplomska\\kompresijaCPU\\build\\CMakeFiles\\CMakeScratch\\TryCompile-srf7pf\\test_mpi.c"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.41.34123 for x64
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_a50ac.dir\\Debug\\\\" /Fd"cmTC_a50ac.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\faks\\diplomska\\kompresijaCPU\\build\\CMakeFiles\\CMakeScratch\\TryCompile-srf7pf\\test_mpi.c"
+          test_mpi.c
+        C:\\faks\\diplomska\\kompresijaCPU\\build\\CMakeFiles\\CMakeScratch\\TryCompile-srf7pf\\test_mpi.c(1,10): error C1083: Cannot open include file: 'mpi.h': No such file or directory [C:\\faks\\diplomska\\kompresijaCPU\\build\\CMakeFiles\\CMakeScratch\\TryCompile-srf7pf\\cmTC_a50ac.vcxproj]
+        Done Building Project "C:\\faks\\diplomska\\kompresijaCPU\\build\\CMakeFiles\\CMakeScratch\\TryCompile-srf7pf\\cmTC_a50ac.vcxproj" (default targets) -- FAILED.
+        
+        Build FAILED.
+        
+        "C:\\faks\\diplomska\\kompresijaCPU\\build\\CMakeFiles\\CMakeScratch\\TryCompile-srf7pf\\cmTC_a50ac.vcxproj" (default target) (1) ->
+        (ClCompile target) -> 
+          C:\\faks\\diplomska\\kompresijaCPU\\build\\CMakeFiles\\CMakeScratch\\TryCompile-srf7pf\\test_mpi.c(1,10): error C1083: Cannot open include file: 'mpi.h': No such file or directory [C:\\faks\\diplomska\\kompresijaCPU\\build\\CMakeFiles\\CMakeScratch\\TryCompile-srf7pf\\cmTC_a50ac.vcxproj]
+        
+            0 Warning(s)
+            1 Error(s)
+        
+        Time Elapsed 00:00:00.25
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/FindMPI.cmake:1282 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/FindMPI.cmake:1326 (_MPI_try_staged_settings)"
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/FindMPI.cmake:1649 (_MPI_check_lang_works)"
+      - "eigen/cmake/FindPTSCOTCH.cmake:95 (find_package)"
+      - "eigen/cmake/FindPastix.cmake:306 (find_package)"
+      - "eigen/test/CMakeLists.txt:94 (find_package)"
+    description: "The MPI test test_mpi for CXX in mode normal"
+    directories:
+      source: "C:/faks/diplomska/kompresijaCPU/build/CMakeFiles/CMakeScratch/TryCompile-2u99ol"
+      binary: "C:/faks/diplomska/kompresijaCPU/build/CMakeFiles/CMakeScratch/TryCompile-2u99ol"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /EHsc /EHsc /wd4127 /wd4505 /wd4714 /D_CRT_SECURE_NO_WARNINGS /D_SCL_SECURE_NO_WARNINGS"
+      CMAKE_MODULE_PATH: "C:/faks/diplomska/kompresijaCPU/eigen/cmake"
+    buildResult:
+      variable: "MPI_RESULT_CXX_test_mpi_normal"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/faks/diplomska/kompresijaCPU/build/CMakeFiles/CMakeScratch/TryCompile-2u99ol'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_bd33c.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.11.9+a69bbaaf5 for .NET Framework
+        Build started 15/12/2024 12:28:04.
+        
+        Project "C:\\faks\\diplomska\\kompresijaCPU\\build\\CMakeFiles\\CMakeScratch\\TryCompile-2u99ol\\cmTC_bd33c.vcxproj" on node 1 (default targets).
+        PrepareForBuild:
+          Creating directory "cmTC_bd33c.dir\\Debug\\".
+          Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+          Creating directory "C:\\faks\\diplomska\\kompresijaCPU\\build\\CMakeFiles\\CMakeScratch\\TryCompile-2u99ol\\Debug\\".
+          Creating directory "cmTC_bd33c.dir\\Debug\\cmTC_bd33c.tlog\\".
+        InitializeBuildStatus:
+          Creating "cmTC_bd33c.dir\\Debug\\cmTC_bd33c.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_bd33c.dir\\Debug\\cmTC_bd33c.tlog\\unsuccessfulbuild".
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D _CRT_SECURE_NO_WARNINGS /D _SCL_SECURE_NO_WARNINGS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_bd33c.dir\\Debug\\\\" /Fd"cmTC_bd33c.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /wd4127 /wd4505 /wd4714 /errorReport:queue "C:\\faks\\diplomska\\kompresijaCPU\\build\\CMakeFiles\\CMakeScratch\\TryCompile-2u99ol\\test_mpi.cpp"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.41.34123 for x64
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D _CRT_SECURE_NO_WARNINGS /D _SCL_SECURE_NO_WARNINGS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_bd33c.dir\\Debug\\\\" /Fd"cmTC_bd33c.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /wd4127 /wd4505 /wd4714 /errorReport:queue "C:\\faks\\diplomska\\kompresijaCPU\\build\\CMakeFiles\\CMakeScratch\\TryCompile-2u99ol\\test_mpi.cpp"
+          test_mpi.cpp
+        C:\\faks\\diplomska\\kompresijaCPU\\build\\CMakeFiles\\CMakeScratch\\TryCompile-2u99ol\\test_mpi.cpp(1,10): error C1083: Cannot open include file: 'mpi.h': No such file or directory [C:\\faks\\diplomska\\kompresijaCPU\\build\\CMakeFiles\\CMakeScratch\\TryCompile-2u99ol\\cmTC_bd33c.vcxproj]
+        Done Building Project "C:\\faks\\diplomska\\kompresijaCPU\\build\\CMakeFiles\\CMakeScratch\\TryCompile-2u99ol\\cmTC_bd33c.vcxproj" (default targets) -- FAILED.
+        
+        Build FAILED.
+        
+        "C:\\faks\\diplomska\\kompresijaCPU\\build\\CMakeFiles\\CMakeScratch\\TryCompile-2u99ol\\cmTC_bd33c.vcxproj" (default target) (1) ->
+        (ClCompile target) -> 
+          C:\\faks\\diplomska\\kompresijaCPU\\build\\CMakeFiles\\CMakeScratch\\TryCompile-2u99ol\\test_mpi.cpp(1,10): error C1083: Cannot open include file: 'mpi.h': No such file or directory [C:\\faks\\diplomska\\kompresijaCPU\\build\\CMakeFiles\\CMakeScratch\\TryCompile-2u99ol\\cmTC_bd33c.vcxproj]
+        
+            0 Warning(s)
+            1 Error(s)
+        
+        Time Elapsed 00:00:00.22
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/FindMPI.cmake:1282 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/FindMPI.cmake:1301 (_MPI_try_staged_settings)"
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/FindMPI.cmake:1649 (_MPI_check_lang_works)"
+      - "eigen/cmake/FindPTSCOTCH.cmake:95 (find_package)"
+      - "eigen/cmake/FindPastix.cmake:306 (find_package)"
+      - "eigen/test/CMakeLists.txt:94 (find_package)"
+    description: "The MPI test test_mpi for Fortran in mode F77_HEADER"
+    directories:
+      source: "C:/faks/diplomska/kompresijaCPU/build/CMakeFiles/CMakeScratch/TryCompile-xfnmmb"
+      binary: "C:/faks/diplomska/kompresijaCPU/build/CMakeFiles/CMakeScratch/TryCompile-xfnmmb"
+    cmakeVariables:
+      CMAKE_Fortran_FLAGS: ""
+      CMAKE_MODULE_PATH: "C:/faks/diplomska/kompresijaCPU/eigen/cmake"
+    buildResult:
+      variable: "MPI_RESULT_Fortran_test_mpi_F77_HEADER"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/faks/diplomska/kompresijaCPU/build/CMakeFiles/CMakeScratch/TryCompile-xfnmmb'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/devenv.com" CMAKE_TRY_COMPILE.sln /build Debug /project cmTC_822c1
+        
+        Microsoft Visual Studio 2022 Version 17.11.5.
+        Copyright (C) Microsoft Corp. All rights reserved.
+        
+        The operation could not be completed. The parameter is incorrect. 
+        
+        Use:
+        devenv  [solutionfile | projectfile | folder | anyfile.ext]  [switches]
+        
+        The first argument for devenv is usually a solution file, project file or a folder.
+        You can also use any other file as the first argument if you want to have the
+        file open automatically in an editor. When you enter a project file, the IDE
+        looks for an .sln file with the same base name as the project file in the
+        parent directory for the project file. If no such .sln file exists, then the
+        IDE looks for a single .sln file that references the project. If no such single
+        .sln file exists, then the IDE creates an unsaved solution with a default .sln
+        file name that has the same base name as the project file.
+        
+        Command line builds:
+        devenv solutionfile.sln /build [ solutionconfig ] [ /project projectnameorfile [ /projectconfig name ] ]
+        Available command line switches:
+        
+        /Build			Builds the solution or project with the specified solution
+        			configuration. For example "Debug". If multiple platforms
+        			are possible, the configuration name must be enclosed in quotes
+        			and contain platform name. For example: "Debug|Win32".
+        /Clean			Deletes build outputs.
+        /Command		Starts the IDE and executes the command.
+        /Deploy			Builds and then deploys the specified build configuration.
+        /DoNotLoadProjects	Opens the specified solution without loading any projects.
+        /Edit			Opens the specified files in a running instance of this
+        			application. If there are no running instances, it will
+        			start a new instance with a simplified window layout.
+        /LCID			Sets the default language in the IDE for the UI.
+        /Log			Logs IDE activity to the specified file for troubleshooting.
+        /NoVSIP			Disables the VSIP developer's license key for VSIP testing.
+        /Out			Appends the build log to a specified file.
+        /Project		Specifies the project to build, clean, or deploy.
+        			Must be used with /Build, /Rebuild, /Clean, or /Deploy.
+        /ProjectConfig		Overrides the project configuration specified in the solution
+        			configuration. For example "Debug". If multiple platforms are
+        			possible, the configuration name must be enclosed in quotes
+        			and contain platform name. For example: "Debug|Win32".
+        			Must be used with /Project.
+        /Rebuild		Cleans and then builds the solution or project with the
+        			specified configuration.
+        /ResetSettings		Restores the IDE's default settings, optionally resets to
+        			the specified VSSettings file.
+        /ResetSkipPkgs		Clears all SkipLoading tags added to VSPackages.
+        /Run			Compiles and runs the specified solution.
+        /RunExit		Compiles and runs the specified solution then closes the IDE.
+        /SafeMode		Launches the IDE in safe mode loading minimal windows.
+        /Upgrade		Upgrades the project or the solution and all projects in it.
+        			A backup of these files will be created as appropriate. Please
+        			see Help on 'Visual Studio Conversion Wizard' for more
+        			information on the backup process.
+        
+        Product-specific switches:
+        
+        /debugexe	Open the specified executable to be debugged. The remainder of 
+        		the command line is passed to this executable as its arguments.
+        /diff		Compares two files.  Takes four parameters:
+        		SourceFile, TargetFile, SourceDisplayName(optional),
+        		TargetDisplayName(optional)
+        /TfsLink	Opens Team Explorer and launches a viewer for the 
+        		provided artifact URI if one is registered.
+        /useenv		Use PATH, INCLUDE, LIBPATH, and LIB environment variables
+        		instead of IDE paths for VC++ builds.
+        
+        To attach the debugger from the command line, use:
+        	VsJITDebugger.exe -p <pid>
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/FindMPI.cmake:1282 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/FindMPI.cmake:1302 (_MPI_try_staged_settings)"
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/FindMPI.cmake:1649 (_MPI_check_lang_works)"
+      - "eigen/cmake/FindPTSCOTCH.cmake:95 (find_package)"
+      - "eigen/cmake/FindPastix.cmake:306 (find_package)"
+      - "eigen/test/CMakeLists.txt:94 (find_package)"
+    description: "The MPI test test_mpi for Fortran in mode F90_MODULE"
+    directories:
+      source: "C:/faks/diplomska/kompresijaCPU/build/CMakeFiles/CMakeScratch/TryCompile-k0wfdd"
+      binary: "C:/faks/diplomska/kompresijaCPU/build/CMakeFiles/CMakeScratch/TryCompile-k0wfdd"
+    cmakeVariables:
+      CMAKE_Fortran_FLAGS: ""
+      CMAKE_MODULE_PATH: "C:/faks/diplomska/kompresijaCPU/eigen/cmake"
+    buildResult:
+      variable: "MPI_RESULT_Fortran_test_mpi_F90_MODULE"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/faks/diplomska/kompresijaCPU/build/CMakeFiles/CMakeScratch/TryCompile-k0wfdd'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/devenv.com" CMAKE_TRY_COMPILE.sln /build Debug /project cmTC_13eb8
+        
+        Microsoft Visual Studio 2022 Version 17.11.5.
+        Copyright (C) Microsoft Corp. All rights reserved.
+        
+        The operation could not be completed. The parameter is incorrect. 
+        
+        Use:
+        devenv  [solutionfile | projectfile | folder | anyfile.ext]  [switches]
+        
+        The first argument for devenv is usually a solution file, project file or a folder.
+        You can also use any other file as the first argument if you want to have the
+        file open automatically in an editor. When you enter a project file, the IDE
+        looks for an .sln file with the same base name as the project file in the
+        parent directory for the project file. If no such .sln file exists, then the
+        IDE looks for a single .sln file that references the project. If no such single
+        .sln file exists, then the IDE creates an unsaved solution with a default .sln
+        file name that has the same base name as the project file.
+        
+        Command line builds:
+        devenv solutionfile.sln /build [ solutionconfig ] [ /project projectnameorfile [ /projectconfig name ] ]
+        Available command line switches:
+        
+        /Build			Builds the solution or project with the specified solution
+        			configuration. For example "Debug". If multiple platforms
+        			are possible, the configuration name must be enclosed in quotes
+        			and contain platform name. For example: "Debug|Win32".
+        /Clean			Deletes build outputs.
+        /Command		Starts the IDE and executes the command.
+        /Deploy			Builds and then deploys the specified build configuration.
+        /DoNotLoadProjects	Opens the specified solution without loading any projects.
+        /Edit			Opens the specified files in a running instance of this
+        			application. If there are no running instances, it will
+        			start a new instance with a simplified window layout.
+        /LCID			Sets the default language in the IDE for the UI.
+        /Log			Logs IDE activity to the specified file for troubleshooting.
+        /NoVSIP			Disables the VSIP developer's license key for VSIP testing.
+        /Out			Appends the build log to a specified file.
+        /Project		Specifies the project to build, clean, or deploy.
+        			Must be used with /Build, /Rebuild, /Clean, or /Deploy.
+        /ProjectConfig		Overrides the project configuration specified in the solution
+        			configuration. For example "Debug". If multiple platforms are
+        			possible, the configuration name must be enclosed in quotes
+        			and contain platform name. For example: "Debug|Win32".
+        			Must be used with /Project.
+        /Rebuild		Cleans and then builds the solution or project with the
+        			specified configuration.
+        /ResetSettings		Restores the IDE's default settings, optionally resets to
+        			the specified VSSettings file.
+        /ResetSkipPkgs		Clears all SkipLoading tags added to VSPackages.
+        /Run			Compiles and runs the specified solution.
+        /RunExit		Compiles and runs the specified solution then closes the IDE.
+        /SafeMode		Launches the IDE in safe mode loading minimal windows.
+        /Upgrade		Upgrades the project or the solution and all projects in it.
+        			A backup of these files will be created as appropriate. Please
+        			see Help on 'Visual Studio Conversion Wizard' for more
+        			information on the backup process.
+        
+        Product-specific switches:
+        
+        /debugexe	Open the specified executable to be debugged. The remainder of 
+        		the command line is passed to this executable as its arguments.
+        /diff		Compares two files.  Takes four parameters:
+        		SourceFile, TargetFile, SourceDisplayName(optional),
+        		TargetDisplayName(optional)
+        /TfsLink	Opens Team Explorer and launches a viewer for the 
+        		provided artifact URI if one is registered.
+        /useenv		Use PATH, INCLUDE, LIBPATH, and LIB environment variables
+        		instead of IDE paths for VC++ builds.
+        
+        To attach the debugger from the command line, use:
+        	VsJITDebugger.exe -p <pid>
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/FindMPI.cmake:1282 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/FindMPI.cmake:1303 (_MPI_try_staged_settings)"
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/FindMPI.cmake:1649 (_MPI_check_lang_works)"
+      - "eigen/cmake/FindPTSCOTCH.cmake:95 (find_package)"
+      - "eigen/cmake/FindPastix.cmake:306 (find_package)"
+      - "eigen/test/CMakeLists.txt:94 (find_package)"
+    description: "The MPI test test_mpi for Fortran in mode F08_MODULE"
+    directories:
+      source: "C:/faks/diplomska/kompresijaCPU/build/CMakeFiles/CMakeScratch/TryCompile-b4hgku"
+      binary: "C:/faks/diplomska/kompresijaCPU/build/CMakeFiles/CMakeScratch/TryCompile-b4hgku"
+    cmakeVariables:
+      CMAKE_Fortran_FLAGS: ""
+      CMAKE_MODULE_PATH: "C:/faks/diplomska/kompresijaCPU/eigen/cmake"
+    buildResult:
+      variable: "MPI_RESULT_Fortran_test_mpi_F08_MODULE"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/faks/diplomska/kompresijaCPU/build/CMakeFiles/CMakeScratch/TryCompile-b4hgku'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/devenv.com" CMAKE_TRY_COMPILE.sln /build Debug /project cmTC_1dcc1
+        
+        Microsoft Visual Studio 2022 Version 17.11.5.
+        Copyright (C) Microsoft Corp. All rights reserved.
+        
+        The operation could not be completed. The parameter is incorrect. 
+        
+        Use:
+        devenv  [solutionfile | projectfile | folder | anyfile.ext]  [switches]
+        
+        The first argument for devenv is usually a solution file, project file or a folder.
+        You can also use any other file as the first argument if you want to have the
+        file open automatically in an editor. When you enter a project file, the IDE
+        looks for an .sln file with the same base name as the project file in the
+        parent directory for the project file. If no such .sln file exists, then the
+        IDE looks for a single .sln file that references the project. If no such single
+        .sln file exists, then the IDE creates an unsaved solution with a default .sln
+        file name that has the same base name as the project file.
+        
+        Command line builds:
+        devenv solutionfile.sln /build [ solutionconfig ] [ /project projectnameorfile [ /projectconfig name ] ]
+        Available command line switches:
+        
+        /Build			Builds the solution or project with the specified solution
+        			configuration. For example "Debug". If multiple platforms
+        			are possible, the configuration name must be enclosed in quotes
+        			and contain platform name. For example: "Debug|Win32".
+        /Clean			Deletes build outputs.
+        /Command		Starts the IDE and executes the command.
+        /Deploy			Builds and then deploys the specified build configuration.
+        /DoNotLoadProjects	Opens the specified solution without loading any projects.
+        /Edit			Opens the specified files in a running instance of this
+        			application. If there are no running instances, it will
+        			start a new instance with a simplified window layout.
+        /LCID			Sets the default language in the IDE for the UI.
+        /Log			Logs IDE activity to the specified file for troubleshooting.
+        /NoVSIP			Disables the VSIP developer's license key for VSIP testing.
+        /Out			Appends the build log to a specified file.
+        /Project		Specifies the project to build, clean, or deploy.
+        			Must be used with /Build, /Rebuild, /Clean, or /Deploy.
+        /ProjectConfig		Overrides the project configuration specified in the solution
+        			configuration. For example "Debug". If multiple platforms are
+        			possible, the configuration name must be enclosed in quotes
+        			and contain platform name. For example: "Debug|Win32".
+        			Must be used with /Project.
+        /Rebuild		Cleans and then builds the solution or project with the
+        			specified configuration.
+        /ResetSettings		Restores the IDE's default settings, optionally resets to
+        			the specified VSSettings file.
+        /ResetSkipPkgs		Clears all SkipLoading tags added to VSPackages.
+        /Run			Compiles and runs the specified solution.
+        /RunExit		Compiles and runs the specified solution then closes the IDE.
+        /SafeMode		Launches the IDE in safe mode loading minimal windows.
+        /Upgrade		Upgrades the project or the solution and all projects in it.
+        			A backup of these files will be created as appropriate. Please
+        			see Help on 'Visual Studio Conversion Wizard' for more
+        			information on the backup process.
+        
+        Product-specific switches:
+        
+        /debugexe	Open the specified executable to be debugged. The remainder of 
+        		the command line is passed to this executable as its arguments.
+        /diff		Compares two files.  Takes four parameters:
+        		SourceFile, TargetFile, SourceDisplayName(optional),
+        		TargetDisplayName(optional)
+        /TfsLink	Opens Team Explorer and launches a viewer for the 
+        		provided artifact URI if one is registered.
+        /useenv		Use PATH, INCLUDE, LIBPATH, and LIB environment variables
+        		instead of IDE paths for VC++ builds.
+        
+        To attach the debugger from the command line, use:
+        	VsJITDebugger.exe -p <pid>
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/FindMPI.cmake:1282 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/FindMPI.cmake:1319 (_MPI_try_staged_settings)"
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/FindMPI.cmake:1649 (_MPI_check_lang_works)"
+      - "eigen/cmake/FindPTSCOTCH.cmake:95 (find_package)"
+      - "eigen/cmake/FindPastix.cmake:306 (find_package)"
+      - "eigen/test/CMakeLists.txt:94 (find_package)"
+    description: "The MPI test test_mpi for Fortran in mode F77_HEADER_NOKIND"
+    directories:
+      source: "C:/faks/diplomska/kompresijaCPU/build/CMakeFiles/CMakeScratch/TryCompile-istoyr"
+      binary: "C:/faks/diplomska/kompresijaCPU/build/CMakeFiles/CMakeScratch/TryCompile-istoyr"
+    cmakeVariables:
+      CMAKE_Fortran_FLAGS: ""
+      CMAKE_MODULE_PATH: "C:/faks/diplomska/kompresijaCPU/eigen/cmake"
+    buildResult:
+      variable: "MPI_RESULT_Fortran_test_mpi_F77_HEADER_NOKIND"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/faks/diplomska/kompresijaCPU/build/CMakeFiles/CMakeScratch/TryCompile-istoyr'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/devenv.com" CMAKE_TRY_COMPILE.sln /build Debug /project cmTC_a5f6a
+        
+        Microsoft Visual Studio 2022 Version 17.11.5.
+        Copyright (C) Microsoft Corp. All rights reserved.
+        
+        The operation could not be completed. The parameter is incorrect. 
+        
+        Use:
+        devenv  [solutionfile | projectfile | folder | anyfile.ext]  [switches]
+        
+        The first argument for devenv is usually a solution file, project file or a folder.
+        You can also use any other file as the first argument if you want to have the
+        file open automatically in an editor. When you enter a project file, the IDE
+        looks for an .sln file with the same base name as the project file in the
+        parent directory for the project file. If no such .sln file exists, then the
+        IDE looks for a single .sln file that references the project. If no such single
+        .sln file exists, then the IDE creates an unsaved solution with a default .sln
+        file name that has the same base name as the project file.
+        
+        Command line builds:
+        devenv solutionfile.sln /build [ solutionconfig ] [ /project projectnameorfile [ /projectconfig name ] ]
+        Available command line switches:
+        
+        /Build			Builds the solution or project with the specified solution
+        			configuration. For example "Debug". If multiple platforms
+        			are possible, the configuration name must be enclosed in quotes
+        			and contain platform name. For example: "Debug|Win32".
+        /Clean			Deletes build outputs.
+        /Command		Starts the IDE and executes the command.
+        /Deploy			Builds and then deploys the specified build configuration.
+        /DoNotLoadProjects	Opens the specified solution without loading any projects.
+        /Edit			Opens the specified files in a running instance of this
+        			application. If there are no running instances, it will
+        			start a new instance with a simplified window layout.
+        /LCID			Sets the default language in the IDE for the UI.
+        /Log			Logs IDE activity to the specified file for troubleshooting.
+        /NoVSIP			Disables the VSIP developer's license key for VSIP testing.
+        /Out			Appends the build log to a specified file.
+        /Project		Specifies the project to build, clean, or deploy.
+        			Must be used with /Build, /Rebuild, /Clean, or /Deploy.
+        /ProjectConfig		Overrides the project configuration specified in the solution
+        			configuration. For example "Debug". If multiple platforms are
+        			possible, the configuration name must be enclosed in quotes
+        			and contain platform name. For example: "Debug|Win32".
+        			Must be used with /Project.
+        /Rebuild		Cleans and then builds the solution or project with the
+        			specified configuration.
+        /ResetSettings		Restores the IDE's default settings, optionally resets to
+        			the specified VSSettings file.
+        /ResetSkipPkgs		Clears all SkipLoading tags added to VSPackages.
+        /Run			Compiles and runs the specified solution.
+        /RunExit		Compiles and runs the specified solution then closes the IDE.
+        /SafeMode		Launches the IDE in safe mode loading minimal windows.
+        /Upgrade		Upgrades the project or the solution and all projects in it.
+        			A backup of these files will be created as appropriate. Please
+        			see Help on 'Visual Studio Conversion Wizard' for more
+        			information on the backup process.
+        
+        Product-specific switches:
+        
+        /debugexe	Open the specified executable to be debugged. The remainder of 
+        		the command line is passed to this executable as its arguments.
+        /diff		Compares two files.  Takes four parameters:
+        		SourceFile, TargetFile, SourceDisplayName(optional),
+        		TargetDisplayName(optional)
+        /TfsLink	Opens Team Explorer and launches a viewer for the 
+        		provided artifact URI if one is registered.
+        /useenv		Use PATH, INCLUDE, LIBPATH, and LIB environment variables
+        		instead of IDE paths for VC++ builds.
+        
+        To attach the debugger from the command line, use:
+        	VsJITDebugger.exe -p <pid>
+        
+      exitCode: 1
+...

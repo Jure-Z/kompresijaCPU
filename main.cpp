@@ -14,6 +14,8 @@
 #include <cmath>
 #include <numeric>
 #include <bitset>
+#include <random>
+#include <limits>
 
 #define _USE_MATH_DEFINES
 #include <math.h>
@@ -23,7 +25,16 @@
 
 #include <Eigen/Dense>
 
+#include "colorDistances.h"
+#include "colorSpaceTransformations.h"
+
 namespace fs = std::filesystem;
+
+enum ColorSpace {
+    RGB,
+    CIELAB,
+    HSV
+};
 
 uint8_t* openImage(const char* path, int& width, int& height, int& channels) {
 
@@ -110,7 +121,7 @@ bool WriteDDS_DXT1(const fs::path& path, const std::vector<uint8_t>& compressedD
 }
 
 
-double determinant2x2(double mat_00, double mat_01, double mat_10, double mat_11) {
+/*double determinant2x2(double mat_00, double mat_01, double mat_10, double mat_11) {
     return mat_00 * mat_11 - mat_01 * mat_10;
 }
 
@@ -213,57 +224,26 @@ Eigen::Vector3d eigenvectorForLargest(const Eigen::Matrix3d& A, double lambda_ma
     eigenvector.normalize();
 
     return eigenvector;
-}
-
-//if any color component is nit in [0, 255], correct color value
-Eigen::Vector3d checkColorInsideBounds(Eigen::Vector3d color, Eigen::Vector3d eigenvector) {
-
-    if (color(0) < 0) {
-        double k = (0 - color(0)) / eigenvector(0);
-        color = color + k * eigenvector;
-    }
-    if (color(0) > 255) {
-        double k = (255 - color(0)) / eigenvector(0);
-        color = color + k * eigenvector;
-    }
-    if (color(1) < 0) {
-        double k = (0 - color(1)) / eigenvector(1);
-        color = color + k * eigenvector;
-    }
-    if (color(1) > 255) {
-        double k = (255 - color(1)) / eigenvector(1);
-        color = color + k * eigenvector;
-    }
-    if (color(2) < 0) {
-        double k = (0 - color(2)) / eigenvector(2);
-        color = color + k * eigenvector;
-    }
-    if (color(2) > 255) {
-        double k = (255 - color(2)) / eigenvector(2);
-        color = color + k * eigenvector;
-    }
-
-    return color;
-}
+}*/
 
 
 //find the two best colors for encoding, using PCA (claculate only the largest eigenvector)
-std::pair<Eigen::Vector3d, Eigen::Vector3d> getColorProjections_LargestEigenvector(const Eigen::MatrixXd& rgbData) {
+/*std::pair<Eigen::Vector3d, Eigen::Vector3d> getColorProjections_LargestEigenvector(const Eigen::MatrixXd& colorData) {
 
     //std::cout << "Data: \n" << rgbData << "\n";
 
     //Compute mean of each channel
-    Eigen::VectorXd mean = rgbData.colwise().mean();
+    Eigen::VectorXd mean = colorData.colwise().mean();
 
     //Center the data
-    Eigen::MatrixXd centeredData = rgbData.rowwise() - mean.transpose();
+    Eigen::MatrixXd centeredData = colorData.rowwise() - mean.transpose();
 
     //Compute covariance matrix
     Eigen::MatrixXd covarianceMatrix = (centeredData.transpose() * centeredData) / (16 - 1);
 
     if (covarianceMatrix.norm() < 1e-6) { //if covariance matrix is all zeros, the entire block is the same color
 
-        return { rgbData.row(0), rgbData.row(0) };
+        return { colorData.row(0), colorData.row(0) };
     }
 
     //characteristic polynomial of 3x3 matrix
@@ -284,25 +264,25 @@ std::pair<Eigen::Vector3d, Eigen::Vector3d> getColorProjections_LargestEigenvect
     double minProjection = projectionLenghts.minCoeff();
     double maxProjection = projectionLenghts.maxCoeff();
 
-    Eigen::Vector3d color0 = minProjection * eigenvector + mean;
-    Eigen::Vector3d color1 = maxProjection * eigenvector + mean;
+    Eigen::Vector3d color0 = (minProjection * eigenvector + mean).array().round();
+    Eigen::Vector3d color1 = (maxProjection * eigenvector + mean).array().round();
 
     color0 = checkColorInsideBounds(color0, eigenvector);
     color1 = checkColorInsideBounds(color1, eigenvector);
 
     return { color0, color1 };
-}
+}*/
 
 //find the two best colors for encoding, using PCA (preform entire PCA process)
-std::pair<Eigen::Vector3d, Eigen::Vector3d> getColorProjections_fullPCA(const Eigen::MatrixXd& rgbData) {
+/*std::pair<Eigen::Vector3d, Eigen::Vector3d> getColorProjections_fullPCA(const Eigen::MatrixXd& colorData) {
 
     //std::cout << "Data: \n" << rgbData << "\n";
 
     //Compute mean of each channel
-    Eigen::VectorXd mean = rgbData.colwise().mean();
+    Eigen::VectorXd mean = colorData.colwise().mean();
 
     //Center the data
-    Eigen::MatrixXd centeredData = rgbData.rowwise() - mean.transpose();
+    Eigen::MatrixXd centeredData = colorData.rowwise() - mean.transpose();
 
     //Compute covariance matrix
     Eigen::MatrixXd covarianceMatrix = (centeredData.transpose() * centeredData) / (16 - 1);
@@ -355,24 +335,25 @@ std::pair<Eigen::Vector3d, Eigen::Vector3d> getColorProjections_fullPCA(const Ei
     color1 = checkColorInsideBounds(color1, eigenVectors.col(2));
 
     return { color0, color1 };
-}
+}*/
 
 
 //find the two best colors for encoding, using PCA (find the largest eigenvector using the power iteration method)
-std::pair<Eigen::Vector3d, Eigen::Vector3d> getColorProjections_PowerIteration(const Eigen::MatrixXd& rgbData) {
+Eigen::Vector3d getEigenvector_PowerIteration(const Eigen::MatrixXd& colorData, Eigen::Vector3d* meanReturn, Eigen::MatrixXd* centeredDataReturn) {
 
     //Compute mean of each channel
-    Eigen::VectorXd mean = rgbData.colwise().mean();
+    Eigen::VectorXd mean = colorData.colwise().mean();
 
     //Center the data
-    Eigen::MatrixXd centeredData = rgbData.rowwise() - mean.transpose();
+    Eigen::MatrixXd centeredData = colorData.rowwise() - mean.transpose();
 
     //Compute covariance matrix
     Eigen::MatrixXd covarianceMatrix = (centeredData.transpose() * centeredData) / (16 - 1);
 
     if (covarianceMatrix.norm() < 1e-6) { //if covariance matrix is all zeros, the entire block is the same color
 
-        return { rgbData.row(0), rgbData.row(0) };
+        Eigen::Vector3d zero(0.0, 0.0, 0.0);
+        return zero;
     }
 
     Eigen::Vector3d eigenvector = Eigen::MatrixXd::Random(3, 1);
@@ -394,24 +375,19 @@ std::pair<Eigen::Vector3d, Eigen::Vector3d> getColorProjections_PowerIteration(c
 
     //std::cout << "Iteration count: " << i << "\n";
 
-    Eigen::MatrixXd projectionLenghts = centeredData * eigenvector / eigenvector.norm();
+    *meanReturn = mean;
+    *centeredDataReturn = centeredData;
 
-
-    double minProjection = projectionLenghts.minCoeff();
-    double maxProjection = projectionLenghts.maxCoeff();
-
-    Eigen::Vector3d color0 = minProjection * eigenvector + mean;
-    Eigen::Vector3d color1 = maxProjection * eigenvector + mean;
-
-    color0 = checkColorInsideBounds(color0, eigenvector);
-    color1 = checkColorInsideBounds(color1, eigenvector);
-
-    return { color0, color1 };
+    return eigenvector;
 }
 
 
-//pack RGB values into a single uint16_t
+//pack RGB value into a single uint16_t
 uint16_t packColor(double R, double G, double B) {
+
+    R = std::round(std::clamp(R, 0.0, 255.0));
+    G = std::round(std::clamp(G, 0.0, 255.0));
+    B = std::round(std::clamp(B, 0.0, 255.0));
 
     uint16_t R16 = static_cast<uint16_t>(R * 31.0 / 255.0); // 5 bits
     uint16_t G16 = static_cast<uint16_t>(G * 63.0 / 255.0); // 6 bits
@@ -422,16 +398,333 @@ uint16_t packColor(double R, double G, double B) {
     return color;
 }
 
-//euclidian distance between two colors
-double euclidianDistance(Eigen::VectorXd color1, Eigen::VectorXd color2) {
-    return std::sqrt(std::pow(color1[0] - color2[0], 2) + std::pow(color1[1] - color2[1], 2) + std::pow(color1[2] - color2[2], 2));
+
+double computeCumulativeDistance(Eigen::VectorXd data, double val0, double val1) {
+    double val2 = (2 * val0 + val1) / 3;
+    double val3 = (val0 + 2 * val1) / 3;
+
+    double totalDistance = 0.0;
+
+    for (int i = 0; i < 16; i++) {
+        double dist = std::min({ std::abs(data[i] - val0), std::abs(data[i] - val1), std::abs(data[i] - val2), std::abs(data[i] - val3)});
+        totalDistance += dist;
+    }
+
+    return totalDistance;
+}
+
+
+Eigen::MatrixXd transformToClosestColors(const Eigen::MatrixXd& colorData, Eigen::Vector3d color0, Eigen::Vector3d color1, double (*distanceFunction)(const Eigen::Vector3d&, const Eigen::Vector3d&)) {
+    Eigen::MatrixXd transformedData(colorData.rows(), colorData.cols());
+
+    // Precompute intermediate colors
+    Eigen::Vector3d color2 = (2 * color0 + color1) / 3;
+    Eigen::Vector3d color3 = (color0 + 2 * color1) / 3;
+
+    // Store all colors in a vector for easy comparison
+    std::vector<Eigen::Vector3d> palette = { color0, color1, color2, color3 };
+
+    for (int i = 0; i < colorData.rows(); i++) {
+        Eigen::Vector3d pixelColor = colorData.row(i);
+
+        // Find the closest color
+        auto closestColor = std::min_element(
+            palette.begin(), palette.end(),
+            [&](const Eigen::Vector3d& a, const Eigen::Vector3d& b) {
+                return distanceFunction(pixelColor, a) < distanceFunction(pixelColor, b);
+            });
+
+        transformedData.row(i) = *closestColor;
+    }
+
+    return transformedData;
+}
+
+
+//any color must be inside the defined color space. If we are searching along the line defined as y = x*v + m, where v is eigenvector and m is mean,
+//the function returns the lower and upper limit for x. lowerBoundary an upperBoundary reffer to the color space boundaries
+std::pair<double, double> findSearchSpaceBounds(const Eigen::Vector3d& mean, const Eigen::Vector3d& eigenvector, double lowerBoundary, double upperBoundary) {
+
+    double candidates[] = {
+        (lowerBoundary - mean[0]) / eigenvector[0],
+        (upperBoundary - mean[0]) / eigenvector[0],
+        (lowerBoundary - mean[1]) / eigenvector[1],
+        (upperBoundary - mean[1]) / eigenvector[1],
+        (lowerBoundary - mean[2]) / eigenvector[2],
+        (upperBoundary - mean[2]) / eigenvector[2]
+    };
+
+    double lower = -1e20;
+    double upper = 1e20;
+
+    for (double candidate : candidates) {
+        if (candidate < 0) {
+            if (candidate > lower)
+                lower = candidate;
+        }
+        else {
+            if (candidate < upper)
+                upper = candidate;
+        }
+    }
+
+    return { lower, upper };
+ }
+
+std::pair<Eigen::Vector3d, Eigen::Vector3d> findOptimalColors(
+    const Eigen::MatrixXd& RGBData,
+    double (*distanceFunction)(const Eigen::Vector3d&, const Eigen::Vector3d&),
+    double (*distanceFunctionBlock)(const Eigen::MatrixXd&, const Eigen::MatrixXd&),
+    ColorSpace colorSpace,
+    double* costImprovement
+) {
+
+    //transform color data into a different color space
+    int matrixRows = RGBData.rows();
+    Eigen::MatrixXd searchSpaceData;
+    Eigen::Vector3d (*colorTransformFunction)(const Eigen::Vector3d&);
+    if (colorSpace == HSV) {
+        searchSpaceData = RGB2HSVBlock(RGBData);
+        colorTransformFunction = RGB2HSV;
+    }
+    else if (colorSpace == CIELAB) {
+        searchSpaceData = RGB2CIELABBlock(RGBData);
+        colorTransformFunction = RGB2CIELAB;
+    }
+    else {
+        searchSpaceData = RGBData;
+        colorTransformFunction = RGB2RGB;
+    }
+
+    //auto [color0, color1] = getColorProjections_fullPCA(PCAdata);
+    //auto [color0, color1] = getColorProjections_LargestEigenvector(PCAdata);
+
+    Eigen::Vector3d mean;
+    Eigen::MatrixXd centeredData;
+
+
+    Eigen::Vector3d eigenvector = getEigenvector_PowerIteration(RGBData, &mean, &centeredData);
+
+    if (eigenvector.norm() == 0) {//entire block has the same color
+        return { RGBData.row(0), RGBData.row(0) };
+    }
+
+    Eigen::MatrixXd projectionLenghts = centeredData * eigenvector / eigenvector.norm();
+
+    auto [lowerBound, upperBound] = findSearchSpaceBounds(mean, eigenvector, 0, 255); //find boundaries for search space
+
+    // Define parameters for simulated annealing
+    double minRange = std::max(projectionLenghts.minCoeff(), lowerBound);
+    double maxRange = std::min(projectionLenghts.maxCoeff(), upperBound);
+    double initialTemperature = 100.0;
+    double coolingRate = 0.90;
+    int maxIterations = 50;
+    double randomStep = 0.1;
+
+    //random number generation
+    std::mt19937 rng(static_cast<unsigned>(std::chrono::system_clock::now().time_since_epoch().count()));
+    std::uniform_real_distribution<double> dist(minRange, maxRange);
+    std::uniform_real_distribution<double> probDist(0.0, 1.0);
+
+
+    // Initial solution
+    double val0 = minRange;
+    double val1 = maxRange;
+    double bestVal0 = val0, bestVal1 = val1;
+
+    double currentCost;
+    if (distanceFunction == nullptr || distanceFunctionBlock == nullptr) { //use default distance metric
+        currentCost = computeCumulativeDistance(projectionLenghts, val0, val1);
+    }
+    else {
+        Eigen::Vector3d col0 = colorTransformFunction((bestVal0 * eigenvector + mean));
+        Eigen::Vector3d col1 = colorTransformFunction((bestVal1 * eigenvector + mean));
+        Eigen::MatrixXd closestColorData = transformToClosestColors(searchSpaceData, col0, col1, distanceFunction);
+
+        currentCost = distanceFunctionBlock(searchSpaceData, closestColorData);
+    }
+
+    double bestCost = currentCost;
+
+    //std::cout << "initial cost: " << currentCost <<"\n";
+    double initialCost = currentCost;
+
+    // Simulated annealing loop
+    double temperature = initialTemperature;
+    for (int i = 0; i < maxIterations; i++) {
+
+        double newVal0 = val0 + dist(rng) * randomStep - randomStep/2; // Small random adjustment
+        double newVal1 = val1 + dist(rng) * randomStep - randomStep/2;
+
+        // Clamp the values to the search range
+        newVal0 = std::clamp(newVal0, minRange, maxRange);
+        newVal1 = std::clamp(newVal1, minRange, maxRange);
+
+        double newCost;
+        if (distanceFunction == nullptr || distanceFunctionBlock == nullptr) { //use default distance metric
+            newCost = computeCumulativeDistance(projectionLenghts, val0, val1);
+        }
+        else {
+            Eigen::Vector3d col0 = colorTransformFunction((bestVal0 * eigenvector + mean));
+            Eigen::Vector3d col1 = colorTransformFunction((bestVal1 * eigenvector + mean));
+            Eigen::MatrixXd closestColorData = transformToClosestColors(searchSpaceData, col0, col1, distanceFunction);
+
+            newCost = distanceFunctionBlock(searchSpaceData, closestColorData);
+        }
+
+        double acceptanceProbability = std::exp((currentCost - newCost) / temperature);
+
+        // Accept or reject the new solution
+        if (newCost < currentCost || probDist(rng) < acceptanceProbability) {
+            val0 = newVal0;
+            val1 = newVal1;
+            currentCost = newCost;
+
+            // Update the best solution
+            if (newCost < bestCost) {
+                bestVal0 = newVal0;
+                bestVal1 = newVal1;
+                bestCost = newCost;
+            }
+        }
+
+        // Cool down the temperature
+        temperature *= coolingRate;
+    }
+
+    if (distanceFunction == nullptr || distanceFunctionBlock == nullptr) { //use default distance metric
+        *costImprovement = initialCost - computeCumulativeDistance(projectionLenghts, bestVal0, bestVal1);
+    }
+    else {
+        Eigen::Vector3d col0 = colorTransformFunction((bestVal0 * eigenvector + mean));
+        Eigen::Vector3d col1 = colorTransformFunction((bestVal1 * eigenvector + mean));
+        Eigen::MatrixXd closestColorData = transformToClosestColors(searchSpaceData, col0, col1, distanceFunction);
+
+        *costImprovement = initialCost - distanceFunctionBlock(searchSpaceData, closestColorData);
+    }
+
+    Eigen::Vector3d color0 = (bestVal0 * eigenvector + mean);
+    Eigen::Vector3d color1 = (bestVal1 * eigenvector + mean);
+
+
+    //transform color back into RGB space
+    /*if (colorSpace == HSV) {
+        color0 = HSV2RGB(color0);
+        color1 = HSV2RGB(color1);
+    }
+    else if (colorSpace == CIELAB) {
+        color0 = CIELAB2RGB(color0);
+        color1 = CIELAB2RGB(color1);
+    }*/
+
+    return { color0, color1 };
 }
 
 int main(int argc, char* argv[]) {
 
+    //char* inputFileArg = argv[1];
+    //char* outputFile = argv[2];
+    //char* colorSpaceArg = argv[3];
+    //char* distanceMetricArg = argv[4];
+
+    char* inputFileArg = "C:/faks/diplomska/image.jpeg";
+    char* outputFileArg = "C:/faks/diplomska/output.dds";
+    char* colorSpaceArg = "HSV";
+    char* distanceMetricArg = "L2";
+
+    //set color space for color optimisation
+    ColorSpace colorSpace;
+    if (strcmp(colorSpaceArg, "RGB") == 0) {
+        std::cout << "Using RGB color space for optimisation" << std::endl;
+        colorSpace = RGB;
+    }
+    else if (strcmp(colorSpaceArg, "HSV") == 0) {
+        std::cout << "Using HSV color space for optimisation" << std::endl;
+        colorSpace = HSV;
+    }
+    else if (strcmp(colorSpaceArg, "CIELAB") == 0) {
+        std::cout << "Using CIELAB color space for optimisation" << std::endl;
+        colorSpace = CIELAB;
+    }
+    else {
+        std::cout << "Color space argument invalid, color space is set to RGB." << std::endl;
+        colorSpace = RGB;
+    }
+
+    //set distance functions for color optimisation
+    double (*distanceFunction)(const Eigen::Vector3d&, const Eigen::Vector3d&);
+    double (*distanceFunctionBlock)(const Eigen::MatrixXd&, const Eigen::MatrixXd&);
+    if (strcmp(distanceMetricArg, "L1") == 0) {
+        if (colorSpace == HSV) { //HSV is a special case, since Hue is circular
+            distanceFunction = distanceL1HSV;
+            distanceFunctionBlock = distanceL1HSVBlock;
+        }
+        else {
+            distanceFunction = distanceL1;
+            distanceFunctionBlock = distanceL1Block;
+        }
+        std::cout << "Using L1 metric for optimisation" << std::endl;
+    }
+    else if(strcmp(distanceMetricArg, "L2") == 0) {
+        if (colorSpace == HSV) { //HSV is a special case, since Hue is circular
+            distanceFunction = distanceL2HSV;
+            distanceFunctionBlock = distanceL2HSVBlock;
+        }
+        else {
+            distanceFunction = distanceL2;
+            distanceFunctionBlock = distanceL2Block;
+        }
+        std::cout << "Using L2 metric for optimisation" << std::endl;
+    }
+    else if (strcmp(distanceMetricArg, "weightedL1") == 0) {
+        if (colorSpace == HSV) { //HSV is a special case, since Hue is circular
+            distanceFunction = weightedDistanceL1HSV;
+            distanceFunctionBlock = weightedDistanceL1HSVBlock;
+            std::cout << "Using weighted L1 metric for optimisation" << std::endl;
+        }
+        else if(colorSpace == RGB){
+            distanceFunction = weightedDistanceL1RGB;
+            distanceFunctionBlock = weightedDistanceL1RGBBlock;
+            std::cout << "Using weighted L1 metric for optimisation" << std::endl;
+        }
+        else {
+            distanceFunction = distanceL1;
+            distanceFunctionBlock = distanceL1Block;
+            std::cout << "Weighted metrica only apply to RGB and HSV, using unweighted L1" << std::endl;
+        }
+
+    }
+    else if (strcmp(distanceMetricArg, "weightedL2") == 0) {
+        if (colorSpace == HSV) { //HSV is a special case, since Hue is circular
+            distanceFunction = weightedDistanceL2HSV;
+            distanceFunctionBlock = weightedDistanceL2HSVBlock;
+            std::cout << "Using weighted L2 metric for optimisation" << std::endl;
+        }
+        else if (colorSpace == RGB) {
+            distanceFunction = weightedDistanceL2RGB;
+            distanceFunctionBlock = weightedDistanceL2RGBBlock;
+            std::cout << "Using weighted L2 metric for optimisation" << std::endl;
+        }
+        else {
+            distanceFunction = distanceL2;
+            distanceFunctionBlock = distanceL2Block;
+            std::cout << "Weighted metrica only apply to RGB and HSV, using unweighted L2" << std::endl;
+        }
+    }
+    else if (strcmp(distanceMetricArg, "default") == 0) {
+        distanceFunction = nullptr;
+        distanceFunctionBlock = nullptr;
+        std::cout << "Using default metric for optimisation" << std::endl;
+    }
+    else {
+        distanceFunction = nullptr;
+        distanceFunctionBlock = nullptr;
+        std::cout << "Distance metric argument invald, using default metric for optimisation" << std::endl;
+    }
+
 	int width, height, channels;
 
-    uint8_t* data = openImage(argv[1], width, height, channels);
+    uint8_t* data = openImage(inputFileArg, width, height, channels);
 
 	std::cout << "width: " << width << std::endl;
 	std::cout << "height: " << height << std::endl;
@@ -447,8 +740,12 @@ int main(int argc, char* argv[]) {
     //measure compression time
     auto start = std::chrono::high_resolution_clock::now();
 
+    double costImprovementSum = 0; //testing
 
     for (int blockI = 0; blockI < blockCountVertical; blockI++) {
+
+        std::cout << "block row: " << blockI << std::endl;
+
         for (int blockJ = 0; blockJ < blockCountHorizontal; blockJ++) {
 
             //pack pixels of a 4x4 block into a matrix
@@ -471,12 +768,12 @@ int main(int argc, char* argv[]) {
                 }
             }
 
-            //auto [color0, color1] = getColorProjections_fullPCA(PCAdata);
+            double costImprovement;//testing
+            
+            auto [color0, color1] = findOptimalColors(PCAdata, distanceFunction, distanceFunctionBlock, colorSpace, &costImprovement);
+            
 
-            //auto [color0, color1] = getColorProjections_LargestEigenvector(PCAdata);
-
-            auto [color0, color1] = getColorProjections_PowerIteration(PCAdata);
-   
+            costImprovementSum += costImprovement; //testing
 
             uint16_t color0Packed = packColor(color0(0), color0(1), color0(2));
             uint16_t color1Packed = packColor(color1(0), color1(1), color1(2));
@@ -508,25 +805,25 @@ int main(int argc, char* argv[]) {
 
                 Eigen::Vector3d pixelColor = PCAdata.row(i);
 
-                double minDist = euclidianDistance(pixelColor, color0);
+                double minDist = distanceFunction(pixelColor, color0);
                 pixelEncodings[i] = 0x00;
 
                 double dist;
 
-                dist = euclidianDistance(pixelColor, color1);
+                dist = distanceFunction(pixelColor, color1);
 
                 if (dist <= minDist) {
                     minDist = dist;
                     pixelEncodings[i] = 0x01;
                 }
 
-                dist = euclidianDistance(pixelColor, color2);
+                dist = distanceFunction(pixelColor, color2);
                 if (dist <= minDist) {
                     minDist = dist;
                     pixelEncodings[i] = 0x02;
                 }
 
-                dist = euclidianDistance(pixelColor, color3);
+                dist = distanceFunction(pixelColor, color3);
                 if (dist <= minDist) {
                     minDist = dist;
                     pixelEncodings[i] = 0x03;
@@ -553,6 +850,8 @@ int main(int argc, char* argv[]) {
         }
     }
 
+    std::cout << "costImprovement: " << costImprovementSum / (blockCountHorizontal * blockCountVertical) << std::endl;
+
     //measure encoding time
     auto stop = std::chrono::high_resolution_clock::now();
     auto duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
@@ -560,7 +859,7 @@ int main(int argc, char* argv[]) {
     std::cout << "duration: " << duration.count() << std::endl;
 
     //frite compressed image into a file 
-    if (WriteDDS_DXT1(argv[2], compressedData, width, height)) {
+    if (WriteDDS_DXT1(outputFileArg, compressedData, width, height)) {
         std::cout << "DDS file with DXT1 compression written successfully.\n";
     }
     else {
