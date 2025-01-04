@@ -476,6 +476,7 @@ std::pair<Eigen::Vector3d, Eigen::Vector3d> findOptimalColors(
     double (*distanceFunction)(const Eigen::Vector3d&, const Eigen::Vector3d&),
     double (*distanceFunctionBlock)(const Eigen::MatrixXd&, const Eigen::MatrixXd&),
     ColorSpace colorSpace,
+    Eigen::Vector3d* meanReturn,
     double* costImprovement
 ) {
 
@@ -504,6 +505,8 @@ std::pair<Eigen::Vector3d, Eigen::Vector3d> findOptimalColors(
 
 
     Eigen::Vector3d eigenvector = getEigenvector_PowerIteration(RGBData, &mean, &centeredData);
+
+    *meanReturn = mean;
 
     if (eigenvector.norm() == 0) {//entire block has the same color
         return { RGBData.row(0), RGBData.row(0) };
@@ -629,7 +632,7 @@ int main(int argc, char* argv[]) {
 
     char* inputFileArg = "C:/faks/diplomska/image.jpeg";
     char* outputFileArg = "C:/faks/diplomska/output.dds";
-    char* colorSpaceArg = "HSV";
+    char* colorSpaceArg = "RGB";
     char* distanceMetricArg = "L2";
 
     //set color space for color optimisation
@@ -755,12 +758,7 @@ int main(int argc, char* argv[]) {
 
                     int pixelIndex = (blockI * 4 + offsetI) * width + (blockJ * 4 + offsetJ);
 
-                    if ((blockI * 4 + offsetI) >= height || (blockJ * 4 + offsetJ) >= width) {
-                        PCAdata(offsetI * 4 + offsetJ, 0) = 0;
-                        PCAdata(offsetI * 4 + offsetJ, 1) = 0;
-                        PCAdata(offsetI * 4 + offsetJ, 2) = 0;
-                    }
-                    else {
+                    if (!((blockI * 4 + offsetI) >= height || (blockJ * 4 + offsetJ) >= width)) {
                         PCAdata(offsetI * 4 + offsetJ, 0) = data[pixelIndex * channels + 0];
                         PCAdata(offsetI * 4 + offsetJ, 1) = data[pixelIndex * channels + 1];
                         PCAdata(offsetI * 4 + offsetJ, 2) = data[pixelIndex * channels + 2];
@@ -769,8 +767,9 @@ int main(int argc, char* argv[]) {
             }
 
             double costImprovement;//testing
+            Eigen::Vector3d mean;
             
-            auto [color0, color1] = findOptimalColors(PCAdata, distanceFunction, distanceFunctionBlock, colorSpace, &costImprovement);
+            auto [color0, color1] = findOptimalColors(PCAdata, distanceFunction, distanceFunctionBlock, colorSpace, &mean, &costImprovement);
             
 
             costImprovementSum += costImprovement; //testing
@@ -796,37 +795,49 @@ int main(int argc, char* argv[]) {
 
             //for each pixel in the block, find the closest color and encode it as a 2-bit value
             std::vector<uint8_t> pixelEncodings(16, 0);
-            for (int i = 0; i < 16; i++) {
 
-                if (color0Packed == color1Packed) {
-                    pixelEncodings[i] = 0x00;
-                    continue;
-                }
+            for (int offsetI = 0; offsetI < 4; offsetI++) {
+                for (int offsetJ = 0; offsetJ < 4; offsetJ++) {
 
-                Eigen::Vector3d pixelColor = PCAdata.row(i);
+                    int pixelIndex = (blockI * 4 + offsetI) * width + (blockJ * 4 + offsetJ);
 
-                double minDist = distanceFunction(pixelColor, color0);
-                pixelEncodings[i] = 0x00;
+                    Eigen::Vector3d pixelColor;
+                    if ((blockI * 4 + offsetI) >= height || (blockJ * 4 + offsetJ) >= width) {
+                        pixelColor << mean;
+                    }
+                    else {
+                        pixelColor << data[pixelIndex * channels + 0], data[pixelIndex * channels + 1], data[pixelIndex * channels + 2];
+                    }
 
-                double dist;
 
-                dist = distanceFunction(pixelColor, color1);
+                    if (color0Packed == color1Packed) {
+                        pixelEncodings[offsetI * 4 + offsetJ] = 0x00;
+                        continue;
+                    }
 
-                if (dist <= minDist) {
-                    minDist = dist;
-                    pixelEncodings[i] = 0x01;
-                }
+                    double minDist = distanceFunction(pixelColor, color0);
+                    pixelEncodings[offsetI * 4 + offsetJ] = 0x00;
 
-                dist = distanceFunction(pixelColor, color2);
-                if (dist <= minDist) {
-                    minDist = dist;
-                    pixelEncodings[i] = 0x02;
-                }
+                    double dist;
 
-                dist = distanceFunction(pixelColor, color3);
-                if (dist <= minDist) {
-                    minDist = dist;
-                    pixelEncodings[i] = 0x03;
+                    dist = distanceFunction(pixelColor, color1);
+
+                    if (dist <= minDist) {
+                        minDist = dist;
+                        pixelEncodings[offsetI * 4 + offsetJ] = 0x01;
+                    }
+
+                    dist = distanceFunction(pixelColor, color2);
+                    if (dist <= minDist) {
+                        minDist = dist;
+                        pixelEncodings[offsetI * 4 + offsetJ] = 0x02;
+                    }
+
+                    dist = distanceFunction(pixelColor, color3);
+                    if (dist <= minDist) {
+                        minDist = dist;
+                        pixelEncodings[offsetI * 4 + offsetJ] = 0x03;
+                    }
                 }
 
             }

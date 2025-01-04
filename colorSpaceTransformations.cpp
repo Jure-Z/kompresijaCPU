@@ -33,17 +33,17 @@ Eigen::MatrixXd RGB2HSVBlock(const Eigen::MatrixXd& RGBData) {
             H += 360.0;
         }
 
-        H = H * (255 / 360); //scale to [0, 255]
+        //H = H * (255 / 360); //scale to [0, 255]
 
         double S;
         if (maxVal == 0) {
             S = 0;
         }
         else {
-            S = (delta / maxVal) * 255;
+            S = (delta / maxVal);
         }
 
-        double V = maxVal * 255;
+        double V = maxVal;
 
         HSVData.row(i) << H, S, V;
     }
@@ -80,17 +80,17 @@ Eigen::Vector3d RGB2HSV(const Eigen::Vector3d& RGBData) {
         H += 360.0;
     }
 
-    H = H * (255 / 360); //scale to [0, 255]
+    //H = H * (255 / 360); //scale to [0, 255]
 
     double S;
     if (maxVal == 0) {
         S = 0;
     }
     else {
-        S = (delta / maxVal) * 255;
+        S = (delta / maxVal);
     }
 
-    double V = maxVal * 255;
+    double V = maxVal;
 
     Eigen::Vector3d HSVData;
     HSVData << H, S, V;
@@ -101,9 +101,9 @@ Eigen::Vector3d RGB2HSV(const Eigen::Vector3d& RGBData) {
 //Converts HSV vector to RGB
 Eigen::Vector3d HSV2RGB(const Eigen::Vector3d& HSVData) {
 
-    double H = HSVData(0) * (360/ 255); // Scale hue to [0, 360]
-    double S = HSVData(1) / 255;
-    double V = HSVData(2) / 255;
+    double H = HSVData(0);
+    double S = HSVData(1);
+    double V = HSVData(2);
 
     double c = V * S;
     double x = c * (1 - std::fabs(fmod(H / 60.0, 2) - 1));
@@ -190,7 +190,7 @@ Eigen::Vector3d RGB2CIELAB(const Eigen::Vector3d& RGBData) {
         double b = 200.0 * (fy - fz);
 
         Eigen::Vector3d CIELABData;
-        CIELABData << l, a + 128, b + 128;
+        CIELABData << l, a, b;
 
         return CIELABData;
 }
@@ -229,7 +229,7 @@ Eigen::MatrixXd RGB2CIELABBlock(const Eigen::MatrixXd& RGBData) {
         double a = 500.0 * (fx - fy);
         double b = 200.0 * (fy - fz);
 
-        CIELABData.row(i) << l, a + 128, b + 128;
+        CIELABData.row(i) << l, a, b;
     }
 
     return CIELABData;
@@ -249,8 +249,8 @@ double gammaCorrectInverse(double value) {
 Eigen::Vector3d CIELAB2RGB(const Eigen::Vector3d& CIELABData) {
 
     double scaledL = CIELABData(0);
-    double scaledA = CIELABData(1) - 128;
-    double scaledB = CIELABData(2) - 128;
+    double scaledA = CIELABData(1);
+    double scaledB = CIELABData(2);
 
     double fy = (scaledL + 16.0) / 116.0;
     double fx = fy + scaledA / 500.0;
