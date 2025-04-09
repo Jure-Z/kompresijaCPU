@@ -2,51 +2,40 @@
 
 //converts matrix of RGB values to HSV. HSV values are scaled to [0, 255]
 Eigen::MatrixXd RGB2HSVBlock(const Eigen::MatrixXd& RGBData) {
+    Eigen::MatrixXd scaledRGB = RGBData.array() / 255.0;
 
-    int matrixRows = RGBData.rows();
-    Eigen::MatrixXd HSVData(matrixRows, 3);
+    Eigen::VectorXd maxVal = scaledRGB.rowwise().maxCoeff();
+    Eigen::VectorXd minVal = scaledRGB.rowwise().minCoeff();
+    Eigen::VectorXd delta = maxVal - minVal;
 
-    for (int i = 0; i < matrixRows; i++) {
-        double scaledR = RGBData(i, 0) / 255;
-        double scaledG = RGBData(i, 1) / 255;
-        double scaledB = RGBData(i, 2) / 255;
+    Eigen::VectorXd H = Eigen::VectorXd::Zero(RGBData.rows());
+    Eigen::VectorXd S = Eigen::VectorXd::Zero(RGBData.rows());
+    Eigen::VectorXd V = maxVal;
 
-        double maxVal = std::max({ scaledR , scaledG , scaledB });
-        double minVal = std::min({ scaledR , scaledG , scaledB });
-        double delta = maxVal - minVal;
+    for (int i = 0; i < RGBData.rows(); ++i) {
+        if (delta(i) > 1e-6) {
+            if (scaledRGB(i, 0) == maxVal(i)) {
+                H(i) = 60.0 * std::fmod((scaledRGB(i, 1) - scaledRGB(i, 2)) / delta(i), 6.0);
+            }
+            else if (scaledRGB(i, 1) == maxVal(i)) {
+                H(i) = 60.0 * ((scaledRGB(i, 2) - scaledRGB(i, 0)) / delta(i) + 2.0);
+            }
+            else {
+                H(i) = 60.0 * ((scaledRGB(i, 0) - scaledRGB(i, 1)) / delta(i) + 4.0);
+            }
 
-        double H;
-        if (delta < 1e-6) {
-            H = 0;
-        }
-        else if (maxVal == scaledR) {
-            H = 60.0 * fmod(((scaledG - scaledB) / delta), 6);
-        }
-        else if (maxVal == scaledG) {
-            H = 60.0 * ((scaledB - scaledR) / delta + 2);
-        }
-        else if (maxVal == scaledB) {
-            H = 60.0 * ((scaledR - scaledG) / delta + 4);
-        }
-
-        if (H < 0) {
-            H += 360.0;
+            if (H(i) < 0) {
+                H(i) += 360.0;
+            }
         }
 
-        //H = H * (255 / 360); //scale to [0, 255]
-
-        double S;
-        if (maxVal == 0) {
-            S = 0;
-        }
-        else {
-            S = (delta / maxVal);
-        }
-
-        double V = maxVal;
-
-        HSVData.row(i) << H, S, V;
+        S(i) = (maxVal(i) > 0) ? (delta(i) / maxVal(i)) : 0;
     }
+
+    Eigen::MatrixXd HSVData(RGBData.rows(), 3);
+    HSVData.col(0) = H;
+    HSVData.col(1) = S;
+    HSVData.col(2) = V;
 
     return HSVData;
 }
@@ -54,41 +43,32 @@ Eigen::MatrixXd RGB2HSVBlock(const Eigen::MatrixXd& RGBData) {
 //converts RGB vector to HSV. HSV values are scaled to [0, 255]
 Eigen::Vector3d RGB2HSV(const Eigen::Vector3d& RGBData) {
 
-    double scaledR = RGBData(0) / 255;
-    double scaledG = RGBData(1) / 255;
-    double scaledB = RGBData(2) / 255;
+    Eigen::Array3d scaledRGB = RGBData.array() / 255.0;
 
-    double maxVal = std::max({ scaledR , scaledG , scaledB });
-    double minVal = std::min({ scaledR , scaledG , scaledB });
+    double maxVal = scaledRGB.maxCoeff();
+    double minVal = scaledRGB.minCoeff();
     double delta = maxVal - minVal;
 
-    double H;
-    if (delta < 1e-6) {
-        H = 0;
-    }
-    else if (maxVal == scaledR) {
-        H = 60.0 * fmod(((scaledG - scaledB) / delta), 6);
-    }
-    else if (maxVal == scaledG) {
-        H = 60.0 * ((scaledB - scaledR) / delta + 2);
-    }
-    else if (maxVal == scaledB) {
-        H = 60.0 * ((scaledR - scaledG) / delta + 4);
-    }
+    double H = 0;
+    if (delta > 1e-6) {
+        if (maxVal == scaledRGB(0)) {
+            H = 60.0 * std::fmod((scaledRGB(1) - scaledRGB(2)) / delta, 6.0);
+        }
+        else if (maxVal == scaledRGB(1)) {
+            H = 60.0 * ((scaledRGB(2) - scaledRGB(0)) / delta + 2.0);
+        }
+        else {
+            H = 60.0 * ((scaledRGB(0) - scaledRGB(1)) / delta + 4.0);
+        }
 
-    if (H < 0) {
-        H += 360.0;
+        if (H < 0) {
+            H += 360.0;
+        }
     }
 
     //H = H * (255 / 360); //scale to [0, 255]
 
-    double S;
-    if (maxVal == 0) {
-        S = 0;
-    }
-    else {
-        S = (delta / maxVal);
-    }
+    double S = (maxVal > 0) ? (delta / maxVal) : 0;
 
     double V = maxVal;
 
