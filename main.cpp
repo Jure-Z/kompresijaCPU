@@ -1,6 +1,4 @@
 ﻿#include <iostream>
-
-#include <iostream>
 #include <cassert>
 #include <vector>
 #include <fstream>
@@ -10,7 +8,6 @@
 #include <cmath>
 #include <numeric>
 #include <bitset>
-#include <random>
 #include <limits>
 
 #define _USE_MATH_DEFINES
@@ -25,13 +22,7 @@
 #include "pcaFunctions.h"
 #include "colorDistances.h"
 #include "colorSpaceTransformations.h"
-
-
-enum ColorSpace {
-    RGB,
-    CIELAB,
-    HSV
-};
+#include "colorSearchFunctions.h"
 
 
 //pack RGB value into a single uint16_t
@@ -51,355 +42,6 @@ uint16_t packColor(double R, double G, double B) {
 }
 
 
-double computeCumulativeDistance(Eigen::VectorXd data, double val0, double val1) {
-    double val2 = (2 * val0 + val1) / 3;
-    double val3 = (val0 + 2 * val1) / 3;
-
-    double totalDistance = 0.0;
-
-    for (int i = 0; i < 16; i++) {
-        double dist = std::min({ std::abs(data[i] - val0), std::abs(data[i] - val1), std::abs(data[i] - val2), std::abs(data[i] - val3)});
-        totalDistance += dist;
-    }
-
-    return totalDistance;
-}
-
-
-Eigen::MatrixXd transformToClosestColors(const Eigen::MatrixXd& colorData, Eigen::Vector3d color0, Eigen::Vector3d color1, double (*distanceFunction)(const Eigen::Vector3d&, const Eigen::Vector3d&)) {
-    Eigen::MatrixXd transformedData(colorData.rows(), colorData.cols());
-
-    // Precompute intermediate colors
-    Eigen::Vector3d color2 = (2 * color0 + color1) / 3;
-    Eigen::Vector3d color3 = (color0 + 2 * color1) / 3;
-
-    // Store all colors in a vector for easy comparison
-    std::vector<Eigen::Vector3d> palette = { color0, color1, color2, color3 };
-
-    for (int i = 0; i < colorData.rows(); i++) {
-        Eigen::Vector3d pixelColor = colorData.row(i);
-
-        // Find the closest color
-        auto closestColor = std::min_element(
-            palette.begin(), palette.end(),
-            [&](const Eigen::Vector3d& a, const Eigen::Vector3d& b) {
-                return distanceFunction(pixelColor, a) < distanceFunction(pixelColor, b);
-            });
-
-        transformedData.row(i) = *closestColor;
-    }
-
-    return transformedData;
-}
-
-
-//any color must be inside the defined color space. If we are searching along the line defined as y = x*v + m, where v is eigenvector and m is mean,
-//the function returns the lower and upper limit for x. lowerBoundary an upperBoundary reffer to the color space boundaries
-std::pair<double, double> findSearchSpaceBounds(const Eigen::Vector3d& mean, const Eigen::Vector3d& eigenvector, double lowerBoundary, double upperBoundary) {
-
-    double candidates[] = {
-        (lowerBoundary - mean[0]) / eigenvector[0],
-        (upperBoundary - mean[0]) / eigenvector[0],
-        (lowerBoundary - mean[1]) / eigenvector[1],
-        (upperBoundary - mean[1]) / eigenvector[1],
-        (lowerBoundary - mean[2]) / eigenvector[2],
-        (upperBoundary - mean[2]) / eigenvector[2]
-    };
-
-    double lower = -1e20;
-    double upper = 1e20;
-
-    for (double candidate : candidates) {
-        if (candidate < 0) {
-            if (candidate > lower)
-                lower = candidate;
-        }
-        else {
-            if (candidate < upper)
-                upper = candidate;
-        }
-    }
-
-    return { lower, upper };
- }
-
-std::pair<Eigen::Vector3d, Eigen::Vector3d> findOptimalColors(
-    const Eigen::MatrixXd& RGBData,
-    double (*distanceFunction)(const Eigen::Vector3d&, const Eigen::Vector3d&),
-    double (*distanceFunctionBlock)(const Eigen::MatrixXd&, const Eigen::MatrixXd&),
-    ColorSpace colorSpace,
-    Eigen::Vector3d* meanReturn,
-    double* cost
-) {
-
-    //transform color data into a different color space
-    int matrixRows = RGBData.rows();
-    Eigen::MatrixXd searchSpaceData;
-    Eigen::Vector3d (*colorTransformFunction)(const Eigen::Vector3d&);
-    if (colorSpace == HSV) {
-        searchSpaceData = RGB2HSVBlock(RGBData);
-        colorTransformFunction = RGB2HSV;
-    }
-    else if (colorSpace == CIELAB) {
-        searchSpaceData = RGB2CIELABBlock(RGBData);
-        colorTransformFunction = RGB2CIELAB;
-    }
-    else {
-        searchSpaceData = RGBData;
-        colorTransformFunction = RGB2RGB;
-    }
-
-    //auto [color0, color1] = getColorProjections_fullPCA(PCAdata);
-    //auto [color0, color1] = getColorProjections_LargestEigenvector(PCAdata);
-
-    Eigen::Vector3d mean;
-    Eigen::MatrixXd centeredData;
-
-
-    Eigen::Vector3d eigenvector = getEigenvector_PowerIteration(RGBData, &mean, &centeredData);
-
-    *meanReturn = mean;
-
-    if (eigenvector.norm() == 0) {//entire block has the same color
-        return { RGBData.row(0), RGBData.row(0) };
-    }
-
-    Eigen::MatrixXd projectionLenghts = centeredData * eigenvector / eigenvector.norm();
-
-    auto [lowerBound, upperBound] = findSearchSpaceBounds(mean, eigenvector, 0, 255); //find boundaries for search space
-
-    // Define parameters for simulated annealing
-    double minRange = std::max(projectionLenghts.minCoeff(), lowerBound);
-    double maxRange = std::min(projectionLenghts.maxCoeff(), upperBound);
-    double initialTemperature = 5.0;
-    double coolingRate = 0.70;
-    int maxIterations = 60;
-    double randomStep = 0.5;
-
-    //random number generation
-    std::mt19937 rng(static_cast<unsigned>(std::chrono::system_clock::now().time_since_epoch().count()));
-    std::uniform_real_distribution<double> dist(minRange, maxRange);
-    std::uniform_real_distribution<double> probDist(0.0, 1.0);
-
-
-    // Initial solution
-    double val0 = minRange;
-    double val1 = maxRange;
-    double bestVal0 = val0, bestVal1 = val1;
-
-    double currentCost;
-    if (distanceFunction == nullptr || distanceFunctionBlock == nullptr) { //use default distance metric
-        currentCost = computeCumulativeDistance(projectionLenghts, val0, val1);
-    }
-    else {
-        Eigen::Vector3d col0 = colorTransformFunction((bestVal0 * eigenvector + mean));
-        Eigen::Vector3d col1 = colorTransformFunction((bestVal1 * eigenvector + mean));
-        Eigen::MatrixXd closestColorData = transformToClosestColors(searchSpaceData, col0, col1, distanceFunction);
-
-        currentCost = distanceFunctionBlock(searchSpaceData, closestColorData);
-    }
-
-    double bestCost = currentCost;
-
-    //std::cout << "initial cost: " << currentCost <<"\n";
-    double initialCost = currentCost;
-
-    // Simulated annealing loop
-    double temperature = initialTemperature;
-    for (int i = 0; i < maxIterations; i++) {
-
-        double newVal0 = val0 + dist(rng) * randomStep - randomStep/2; // Small random adjustment
-        double newVal1 = val1 + dist(rng) * randomStep - randomStep/2;
-
-        if (newVal0 > newVal1) {
-            double temp = newVal0;
-            newVal0 = newVal1;
-            newVal1 = temp;
-        }
-
-        // Clamp the values to the search range
-        newVal0 = std::clamp(newVal0, minRange, maxRange);
-        newVal1 = std::clamp(newVal1, minRange, maxRange);
-
-        double newCost;
-        if (distanceFunction == nullptr || distanceFunctionBlock == nullptr) { //use default distance metric
-            newCost = computeCumulativeDistance(projectionLenghts, newVal0, newVal1);
-        }
-        else {
-            Eigen::Vector3d col0 = colorTransformFunction((newVal0 * eigenvector + mean));
-            Eigen::Vector3d col1 = colorTransformFunction((newVal1 * eigenvector + mean));
-            Eigen::MatrixXd closestColorData = transformToClosestColors(searchSpaceData, col0, col1, distanceFunction);
-
-            newCost = distanceFunctionBlock(searchSpaceData, closestColorData);
-        }
-
-        double acceptanceProbability = std::exp((currentCost - newCost) / temperature);
-
-        // Accept or reject the new solution
-        if (/*newCost < currentCost || */ probDist(rng) < acceptanceProbability) {
-            val0 = newVal0;
-            val1 = newVal1;
-            currentCost = newCost;
-
-            // Update the best solution
-            if (newCost < bestCost) {
-                bestVal0 = newVal0;
-                bestVal1 = newVal1;
-                bestCost = newCost;
-            }
-        }
-
-        // Cool down the temperature
-        temperature *= coolingRate;
-    }
-
-    if (distanceFunction == nullptr || distanceFunctionBlock == nullptr) { //use default distance metric
-        *cost = initialCost - computeCumulativeDistance(projectionLenghts, bestVal0, bestVal1);
-    }
-    else {
-        Eigen::Vector3d col0 = colorTransformFunction((bestVal0 * eigenvector + mean));
-        Eigen::Vector3d col1 = colorTransformFunction((bestVal1 * eigenvector + mean));
-        Eigen::MatrixXd closestColorData = transformToClosestColors(searchSpaceData, col0, col1, distanceFunction);
-
-        *cost = initialCost - distanceFunctionBlock(searchSpaceData, closestColorData);
-    }
-
-    Eigen::Vector3d color0 = (bestVal0 * eigenvector + mean);
-    Eigen::Vector3d color1 = (bestVal1 * eigenvector + mean);
-
-
-    //transform color back into RGB space
-    /*if (colorSpace == HSV) {
-        color0 = HSV2RGB(color0);
-        color1 = HSV2RGB(color1);
-    }
-    else if (colorSpace == CIELAB) {
-        color0 = CIELAB2RGB(color0);
-        color1 = CIELAB2RGB(color1);
-    }*/
-
-    return { color0, color1 };
-}
-
-std::pair<Eigen::Vector3d, Eigen::Vector3d> findOptimalColors1(
-    const Eigen::MatrixXd& RGBData,
-    double (*distanceFunction)(const Eigen::Vector3d&, const Eigen::Vector3d&),
-    double (*distanceFunctionBlock)(const Eigen::MatrixXd&, const Eigen::MatrixXd&),
-    ColorSpace colorSpace,
-    Eigen::Vector3d* meanReturn,
-    double* cost
-) {
-
-    //transform color data into a different color space
-    int matrixRows = RGBData.rows();
-    Eigen::MatrixXd searchSpaceData;
-    Eigen::Vector3d(*colorTransformFunction)(const Eigen::Vector3d&);
-    if (colorSpace == HSV) {
-        searchSpaceData = RGB2HSVBlock(RGBData);
-        colorTransformFunction = RGB2HSV;
-    }
-    else if (colorSpace == CIELAB) {
-        searchSpaceData = RGB2CIELABBlock(RGBData);
-        colorTransformFunction = RGB2CIELAB;
-    }
-    else {
-        searchSpaceData = RGBData;
-        colorTransformFunction = RGB2RGB;
-    }
-
-    //auto [color0, color1] = getColorProjections_fullPCA(PCAdata);
-    //auto [color0, color1] = getColorProjections_LargestEigenvector(PCAdata);
-
-    Eigen::Vector3d mean;
-    Eigen::MatrixXd centeredData;
-
-
-    Eigen::Vector3d eigenvector = getEigenvector_PowerIteration(RGBData, &mean, &centeredData);
-
-    *meanReturn = mean;
-
-    if (eigenvector.norm() == 0) {//entire block has the same color
-        return { RGBData.row(0), RGBData.row(0) };
-    }
-
-    Eigen::MatrixXd projectionLenghts = centeredData * eigenvector / eigenvector.norm();
-
-    auto [lowerBound, upperBound] = findSearchSpaceBounds(mean, eigenvector, 0, 255); //find boundaries for search space
-
-    // Define parameters for simulated annealing
-    double minRange = std::max(projectionLenghts.minCoeff(), lowerBound);
-    double maxRange = std::min(projectionLenghts.maxCoeff(), upperBound);
-    int resolution = 100;
-
-
-    // Initial solution
-    double val0 = minRange;
-    double val1 = maxRange;
-    double bestVal0 = val0, bestVal1 = val1;
-
-    double currentCost;
-    if (distanceFunction == nullptr || distanceFunctionBlock == nullptr) { //use default distance metric
-        currentCost = computeCumulativeDistance(projectionLenghts, val0, val1);
-    }
-    else {
-        Eigen::Vector3d col0 = colorTransformFunction((bestVal0 * eigenvector + mean));
-        Eigen::Vector3d col1 = colorTransformFunction((bestVal1 * eigenvector + mean));
-        Eigen::MatrixXd closestColorData = transformToClosestColors(searchSpaceData, col0, col1, distanceFunction);
-
-        currentCost = distanceFunctionBlock(searchSpaceData, closestColorData);
-    }
-
-    double bestCost = currentCost;
-
-    //std::cout << "initial cost: " << currentCost <<"\n";
-    double initialCost = currentCost;
-
-    double stepSize = (maxRange - minRange) / resolution;
-
-    //search entire space for the optimal solution
-    for (int a = 0; a < resolution; a++) {
-        for(int b = a; b < resolution; b++) {
-            val0 = minRange + a * stepSize;
-            val1 = minRange + b * stepSize;
-
-            double newCost;
-            if (distanceFunction == nullptr || distanceFunctionBlock == nullptr) { //use default distance metric
-                newCost = computeCumulativeDistance(projectionLenghts, val0, val1);
-            }
-            else {
-                Eigen::Vector3d col0 = colorTransformFunction((val0 * eigenvector + mean));
-                Eigen::Vector3d col1 = colorTransformFunction((val1 * eigenvector + mean));
-                Eigen::MatrixXd closestColorData = transformToClosestColors(searchSpaceData, col0, col1, distanceFunction);
-
-                newCost = distanceFunctionBlock(searchSpaceData, closestColorData);
-            }
-
-            if (newCost < bestCost) {
-                bestVal0 = val0;
-                bestVal1 = val1;
-                bestCost = newCost;
-            }
-        }
-    }
-
-    if (distanceFunction == nullptr || distanceFunctionBlock == nullptr) { //use default distance metric
-        *cost = initialCost - computeCumulativeDistance(projectionLenghts, bestVal0, bestVal1);
-    }
-    else {
-        Eigen::Vector3d col0 = colorTransformFunction((bestVal0 * eigenvector + mean));
-        Eigen::Vector3d col1 = colorTransformFunction((bestVal1 * eigenvector + mean));
-        Eigen::MatrixXd closestColorData = transformToClosestColors(searchSpaceData, col0, col1, distanceFunction);
-
-        *cost = initialCost - distanceFunctionBlock(searchSpaceData, closestColorData);
-    }
-
-    Eigen::Vector3d color0 = (bestVal0 * eigenvector + mean);
-    Eigen::Vector3d color1 = (bestVal1 * eigenvector + mean);
-
-
-    return { color0, color1 };
-}
-
 int main(int argc, char* argv[]) {
 
     //char* inputFileArg = argv[1];
@@ -414,21 +56,25 @@ int main(int argc, char* argv[]) {
 
     //set color space for color optimisation
     ColorSpace colorSpace;
+    Eigen::Vector3d(*colorTransformFunction)(const Eigen::Vector3d&);
     if (strcmp(colorSpaceArg, "RGB") == 0) {
         std::cout << "Using RGB color space for optimisation" << std::endl;
         colorSpace = RGB;
+        colorTransformFunction = RGB2RGB;
     }
     else if (strcmp(colorSpaceArg, "HSV") == 0) {
         std::cout << "Using HSV color space for optimisation" << std::endl;
         colorSpace = HSV;
+        colorTransformFunction = RGB2HSV;
     }
     else if (strcmp(colorSpaceArg, "CIELAB") == 0) {
         std::cout << "Using CIELAB color space for optimisation" << std::endl;
         colorSpace = CIELAB;
+        colorTransformFunction = RGB2CIELAB;
     }
     else {
         std::cout << "Color space argument invalid, color space is set to RGB." << std::endl;
-        colorSpace = RGB;
+        colorTransformFunction = RGB2RGB;
     }
 
     //set distance functions for color optimisation
@@ -470,7 +116,7 @@ int main(int argc, char* argv[]) {
         else {
             distanceFunction = distanceL1;
             distanceFunctionBlock = distanceL1Block;
-            std::cout << "Weighted metrica only apply to RGB and HSV, using unweighted L1" << std::endl;
+            std::cout << "Weighted metric only applies to RGB and HSV, using unweighted L1" << std::endl;
         }
 
     }
@@ -488,7 +134,7 @@ int main(int argc, char* argv[]) {
         else {
             distanceFunction = distanceL2;
             distanceFunctionBlock = distanceL2Block;
-            std::cout << "Weighted metrica only apply to RGB and HSV, using unweighted L2" << std::endl;
+            std::cout << "Weighted metric only applies to RGB and HSV, using unweighted L2" << std::endl;
         }
     }
     else if (strcmp(distanceMetricArg, "default") == 0) {
@@ -499,7 +145,7 @@ int main(int argc, char* argv[]) {
     else {
         distanceFunction = nullptr;
         distanceFunctionBlock = nullptr;
-        std::cout << "Distance metric argument invald, using default metric for optimisation" << std::endl;
+        std::cout << "Distance metric argument invald" << std::endl;
     }
 
 	int width, height, channels;
@@ -520,7 +166,8 @@ int main(int argc, char* argv[]) {
     //measure compression time
     auto start = std::chrono::high_resolution_clock::now();
 
-    double costSum = 0; //testing
+    double costSum = 0;
+    double costImprovementSum = 0; //testing
 
     for (int blockI = 0; blockI < blockCountVertical; blockI++) {
 
@@ -531,9 +178,9 @@ int main(int argc, char* argv[]) {
             int pixelCounter = 0;
 
             //pack pixels of a 4x4 block into a matrix
-            Eigen::MatrixXd PCAdata(36, channels);
-            for (int offsetI = -1; offsetI < 5; offsetI++) {
-                for (int offsetJ = -1; offsetJ < 5; offsetJ++) {
+            Eigen::MatrixXd PCAdata(16, channels);
+            for (int offsetI = 0; offsetI < 4; offsetI++) {
+                for (int offsetJ = 0; offsetJ < 4; offsetJ++) {
 
                     int pixelIndex = (blockI * 4 + offsetI) * width + (blockJ * 4 + offsetJ);
 
@@ -547,19 +194,48 @@ int main(int argc, char* argv[]) {
                 }
             }
 
-            double cost;//testing
-            Eigen::Vector3d mean;
+            //find optimal colors for block type 1
+            double cost_block1;
+            double costImprovement_block1; //testing
+            Eigen::Vector3d mean_block1;
             
-            auto [color0, color1] = findOptimalColors1(PCAdata, distanceFunction, distanceFunctionBlock, colorSpace, &mean, &cost);
-            
+            auto [color0_block1, color1_block1] = findOptimalColorsLinear(PCAdata, distanceFunction, distanceFunctionBlock, colorSpace, 1, &mean_block1, &cost_block1, &costImprovement_block1);
 
-            costSum += cost; //testing
+
+            //find optimal colors for block type 2
+            double cost_block2;
+            double costImprovement_block2; //testing
+            Eigen::Vector3d mean_block2;
+
+            auto [color0_block2, color1_block2] = findOptimalColorsLinear(PCAdata, distanceFunction, distanceFunctionBlock, colorSpace, 2, &mean_block2, &cost_block2, &costImprovement_block2);
+            
+            //choose best block type
+            int bestType;
+            Eigen::Vector3d mean, color0, color1;
+            if (cost_block1 <= cost_block2) {
+                bestType = 1;
+                mean = mean_block1;
+                color0 = color0_block1;
+                color1 = color1_block1;
+                costSum += cost_block1;
+                costImprovementSum += costImprovement_block1; //testing
+            }
+            else {
+                bestType = 2;
+                mean = mean_block2;
+                color0 = color0_block2;
+                color1 = color1_block2;
+                costSum += cost_block2;
+                costImprovementSum += costImprovement_block2; //testing
+            }
+
+            std::cout << "optimalType: " << bestType << std::endl;
 
             uint16_t color0Packed = packColor(color0(0), color0(1), color0(2));
             uint16_t color1Packed = packColor(color1(0), color1(1), color1(2));
 
-            //color0 should be > color1, to use block type 1 for encoding
-            if (color0Packed <= color1Packed) {
+            //color0 should be > color1 for block type 1 and color0 < color1 for block type 2
+            if ((color0Packed <= color1Packed && bestType == 1) || (color0Packed > color1Packed && bestType == 2)) {
                 Eigen::Vector3d temp = color0;
                 color0 = color1;
                 color1 = temp;
@@ -570,9 +246,22 @@ int main(int argc, char* argv[]) {
             }
 
 
-            //interpolate to get color2 and color3
-            Eigen::Vector3d color2 = (2 * color0 + color1) / 3;
-            Eigen::Vector3d color3 = (color0 + 2 * color1) / 3;
+            //interpolate to get color2 and color3 (different depending on block type)
+            Eigen::Vector3d color2;
+            Eigen::Vector3d color3;
+            if (bestType == 1) {
+                color2 = (2 * color0 + color1) / 3;
+                color3 = (color0 + 2 * color1) / 3;
+            }
+            else {
+                color2 = (color0 + color1) / 2;
+                color3 << 0, 0, 0;
+            }
+
+            color0 = colorTransformFunction(color0);
+            color1 = colorTransformFunction(color1);
+            color2 = colorTransformFunction(color2);
+            color3 = colorTransformFunction(color3);
 
             //for each pixel in the block, find the closest color and encode it as a 2-bit value
             std::vector<uint8_t> pixelEncodings(16, 0);
@@ -590,6 +279,7 @@ int main(int argc, char* argv[]) {
                         pixelColor << data[pixelIndex * channels + 0], data[pixelIndex * channels + 1], data[pixelIndex * channels + 2];
                     }
 
+                    pixelColor = colorTransformFunction(pixelColor);
 
                     if (color0Packed == color1Packed) {
                         pixelEncodings[offsetI * 4 + offsetJ] = 0x00;
@@ -642,7 +332,8 @@ int main(int argc, char* argv[]) {
         }
     }
 
-    std::cout << "costImprovementSum: " << costSum / (blockCountHorizontal * blockCountVertical) << std::endl;
+    std::cout << "costAvg: " << costSum / (blockCountHorizontal * blockCountVertical) << std::endl;
+    std::cout << "costImprovementAvg: " << costImprovementSum / (blockCountHorizontal * blockCountVertical) << std::endl;
 
     //measure encoding time
     auto stop = std::chrono::high_resolution_clock::now();
@@ -657,7 +348,6 @@ int main(int argc, char* argv[]) {
     else {
         std::cout << "Failed to write DDS file.\n";
     }
-
 
 	return 0;
 }

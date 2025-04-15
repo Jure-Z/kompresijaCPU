@@ -6,7 +6,7 @@ project(
 )
 
 # We specify that we want to create a target of type executable, called "App"
-add_executable(App main.cpp "stb_image.h" "colorDistances.cpp" "colorDistances.h" "colorSpaceTransformations.cpp" "colorSpaceTransformations.h" "fileHandlers.cpp" "fileHandlers.h" "pcaFunctions.cpp" "pcaFunctions.h")
+add_executable(App main.cpp "stb_image.h" "colorDistances.cpp" "colorDistances.h" "colorSpaceTransformations.cpp" "colorSpaceTransformations.h" "fileHandlers.cpp" "fileHandlers.h" "pcaFunctions.cpp" "pcaFunctions.h" "colorSearchFunctions.h" "colorSearchFunctions.cpp")
 
 # Set some recommended properties to configure the version of C++ and treat warnings as errors
 set_target_properties(App PROPERTIES

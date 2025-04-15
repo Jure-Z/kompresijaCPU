@@ -76,6 +76,11 @@ bool WriteDDS_DXT1(const fs::path& path, const std::vector<uint8_t>& compressedD
     header.pixelFormat.size = 32;
     header.pixelFormat.flags = 0x4; // DDPF_FOURCC
     header.pixelFormat.fourCC = 0x31545844; // "DXT1" in little-endian
+    header.pixelFormat.rgbBitCount = 0; // Not used for FOURCC
+    header.pixelFormat.rBitMask = 0;
+    header.pixelFormat.gBitMask = 0;
+    header.pixelFormat.bBitMask = 0;
+    header.pixelFormat.aBitMask = 0;
     header.caps[0] = 0x1000; // DDSCAPS_TEXTURE
     if (mipMapCount > 1) {
         header.caps[0] |= 0x400000; // DDSCAPS_MIPMAP
